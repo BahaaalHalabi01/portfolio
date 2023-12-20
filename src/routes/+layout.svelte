@@ -14,6 +14,7 @@
 </script>
 
 <main class="container w-full mx-auto flex flex-col grow min-h-screen relative ">
+
 	<nav class="flex items-center justify-between h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900 z-20">
 		<span class="inline-flex gap-x-2 items-center p-2">
 			<BugPlay />

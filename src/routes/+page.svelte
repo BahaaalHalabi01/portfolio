@@ -1,9 +1,10 @@
 <script lang="ts">
 	import ExperienceAccordion from '$src/components/experience-accordion.svelte';
-	import { ToggleLeft, Unlock, ToggleRight, Lock } from 'lucide-svelte';
+	import { ToggleLeft, Unlock, ToggleRight, Lock, ChevronsDown } from 'lucide-svelte';
 	import { initExperiences } from './experiences';
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
+	import type { MouseEventHandler } from 'svelte/elements';
 
 	export let data: PageData;
 	const { titles } = data;
@@ -46,10 +47,17 @@
 	};
 </script>
 
-<section class="flex gap-y-4 flex-col min-h-full" id="about">
+<section class="flex gap-y-4 flex-col min-h-full relative" id="about">
+	<img
+		src="/linux.png"
+		class="bg-transparent absolute right-0 top-0 hover:scale-125 transition-all hover:rotate-12"
+		width={96}
+		height={96}
+		alt="linux"
+	/>
 	<p class="text-2xl">Welcome to my portfolio, my name is</p>
-	<h1 class="text-green-600 lg:text-7xl snap-center">Bahaa al Halabi</h1>
-	<h2 class="lg:text-7xl lg:pb-6">I turn ideas into cool web apps</h2>
+	<h1 class="text-green-600 lg:text-7xl font-semibold">Bahaa al Halabi</h1>
+	<h2 class="lg:text-7xl lg:pb-6 font-medium">I turn ideas into cool web apps</h2>
 	<p class="text-stone-400 text-2xl lg:max-w-4xl">
 		I am a middle+ full stack web developer. I mainly use <span
 			class="text-green-600 italic text-3xl">Typescript</span
@@ -83,13 +91,59 @@
 			href="https://neovim.io/"
 			target="_blank"
 			rel="noreferrer">{' '}NeoVim</a
+		>. I use
+		<a
+			class="text-3xl italic text-green-600"
+			href="https://pop.system76.com/"
+			target="_blank"
+			rel="noreferrer">linux{' '}</a
 		>
+		as my preferred operating system.
 	</p>
 	<div class="py-6" />
 	<Button class="text-xl w-fit">Interested in More?</Button>
+
+	<div class="py-6" />
+	<a
+		href="#skills"
+		class="absolute bottom-4 right-0 w-fit hover:scale-125 transition-transform duration-300"
+		><ChevronsDown class="w-28 h-14" /></a
+	>
 </section>
-<div class="py-24" />
-<section class="" id="experience">
+<div class="py-8" />
+<section class="scroll-m-16" id="skills">
+	<h1 class="text-green-600 lg:text-6xl pr-8">My Skills</h1>
+	<div class="py-6" />
+	<div
+		class="grid grid-cols-3 rounded-md shadow-md px-12 gap-x-4 mx-auto py-8 bg-slate-700 place-content-center place-items-center"
+	>
+		<div class="flex flex-col items-start justify-start h-full">
+			<p class='text-3xl pb-4 text-green-600 font-medium'>Front End</p>
+			<ul>
+				<li>Typescript,JsDoc</li>
+				<li>React, Svelte</li>
+				<li>NextJs, Sveltekit</li>
+				<li>Tailwindcss, MaterialUi,RadixUi</li>
+				<li>GraphQl, TanStack Query,tRPC</li>
+				<li>Redux, Redux Toolkit</li>
+			</ul>
+		</div>
+		<div class="flex flex-col items-start justify-start h-full">
+			<p class='text-3xl pb-4 text-green-600 font-medium'>Back End</p>
+			<ul>
+				<li>NodeJs</li>
+				<li>Amazon Web Services</li>
+				<li>Serverless</li>
+				<li>Sql,No-Sql</li>
+				<li>Rust</li>
+			</ul>
+		</div>
+		<div class="flex flex-col">Managment</div>
+	</div>
+</section>
+
+<div class="py-16" />
+<section class="scroll-m-16" id="experience">
 	<h1 class="text-green-600 lg:text-6xl pr-8">My Work Experience</h1>
 	<div class="flex items-end gap-x-8 py-8">
 		<Button
@@ -161,7 +215,7 @@
 				communicate directly to the product owner/company owner for changes and progress
 			</p>
 		</ExperienceAccordion>
-		<ExperienceAccordion label={titles[1]} href='https://qaff.com' website='qaff.com'>
+		<ExperienceAccordion label={titles[1]} href="https://qaff.com" website="qaff.com">
 			<p class="italic">August 2023 - September 2023 (1 Month)</p>
 			<ul class="list-disc list-inside">
 				<li>
@@ -181,16 +235,20 @@
 		</ExperienceAccordion>
 		<ExperienceAccordion label={titles[2]}>
 			<p class="italic">July 2023 - September 2023 (3 Months)</p>
-      <p class='text-xl'>This project allowed me to try the new NextJs App Router and React Server Components in a production environment. 
-        As i had to make all the tech decisions, it was a good chance to test libraries that i already enjoyed working with locally (ex:prisma,authjs)</p>
+			<p class="text-xl">
+				This project allowed me to try the new NextJs App Router and React Server Components in a
+				production environment. As i had to make all the tech decisions, it was a good chance to
+				test libraries that i already enjoyed working with locally (ex:prisma,authjs)
+			</p>
 			<p class="text-xl">A summary of the tasks i did:</p>
-			<ul class="list-disc list-inside ">
+			<ul class="list-disc list-inside">
 				<li>
 					Develop from scratch a NextJs ( Server Components) application that lets the user using a
-					flow board (Reactflow library) create a battery testing schema and interact with it using drag and drop.
-          </li>
-          <li>
-          Vizualize data in a table allowing you to edit,delete, and duplicate your testing schemas.
+					flow board (Reactflow library) create a battery testing schema and interact with it using
+					drag and drop.
+				</li>
+				<li>
+					Vizualize data in a table allowing you to edit,delete, and duplicate your testing schemas.
 				</li>
 				<li>Host the application, use PostgreSql with an Orm for the database (using Supabase).</li>
 				<li>
@@ -277,4 +335,10 @@
 			</ul>
 		</ExperienceAccordion>
 	</div>
+
+	<a
+		href="#experience"
+		class="sticky bottom-4 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
+		><ChevronsDown class="w-28 h-14" /></a
+	>
 </section>

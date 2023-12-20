@@ -5,7 +5,7 @@
 
 @layer base {
   html {
-    @apply bg-slate-900 text-slate-300 p-0 m-0;
+    @apply bg-slate-900 text-slate-300 p-0 m-0 scroll-smooth;
   }
   body {
     @apply text-lg font-sans;
