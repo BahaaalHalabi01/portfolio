@@ -1,9 +1,7 @@
 <script>
 	import Telegram from '$src/lib/icons/telegram.svelte';
 	import '../app.css';
-	import { BugPlay, Github, Instagram, Linkedin, Twitter } from 'lucide-svelte';
-
-	let data;
+	import { AtSign, BugPlay, Github, Instagram, Linkedin, Twitter } from 'lucide-svelte';
 
 	const headers = [
 		{ href: '/about', label: 'about' },
@@ -11,11 +9,15 @@
 		{ href: '/work', label: 'work' },
 		{ href: '/contact', label: 'contact' }
 	];
+	const comingSoon = () => {
+		alert('My apologies,I do not have those social media yet!');
+	};
 </script>
 
-<main class="container w-full mx-auto flex flex-col grow min-h-screen relative ">
-
-	<nav class="flex items-center justify-between h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900 z-20">
+<main class="container w-full mx-auto flex flex-col grow min-h-screen relative">
+	<nav
+		class="flex items-center justify-between h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900 z-20"
+	>
 		<span class="inline-flex gap-x-2 items-center p-2">
 			<BugPlay />
 			Bahaa al Halabi
@@ -62,11 +64,32 @@
 		>
 			<Telegram />
 		</a>
-		<a href="/" class="hover:scale-125 transition-transform duration-300 ease-out">
+
+		<a
+			href="mailto:bahaa.alhalabi01@outlook.com"
+			class="hover:scale-125 transition-transform duration-300 ease-out"
+		>
+			<AtSign />
+		</a>
+		<a
+			href="/"
+			class="hover:scale-125 transition-transform duration-300 ease-out"
+			on:click|preventDefault|once={comingSoon}
+		>
 			<Instagram />
 		</a>
-		<a href="/" class="hover:scale-125 transition-transform duration-300 ease-out">
+		<a
+			href="/"
+			class="hover:scale-125 transition-transform duration-300 ease-out"
+			on:click|preventDefault|once={comingSoon}
+		>
 			<Twitter />
 		</a>
 	</div>
+
+	<footer>
+		<a href="https://www.flaticon.com/free-icons/check-mark" title="check mark icons"
+			>Check mark icons created by icon wind - Flaticon</a
+		>
+	</footer>
 </main>

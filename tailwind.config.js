@@ -16,13 +16,16 @@ export default {
       padding: {
         DEFAULT: '1rem',
         sm: '1rem',
-        lg: '2rem',
-        xl: '3rem',
-        '2xl':'5rem',
+        lg: '0.5rem',
+        xl: '0rem',
+        '2xl': '3rem',
         '3xl': '5rem'
       },
     },
     extend: {
+      listStyleImage: {
+        checkmark: 'url("/checkmark.png")'
+      },
       fontFamily: {
 
       },

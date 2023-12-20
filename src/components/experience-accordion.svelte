@@ -7,12 +7,14 @@
 		label = '',
 		href = '',
 		website = '',
-		className = ''
+		className = '',
+    children
 	} = $props<{
 		label?: string;
 		href?: string;
 		website?: string;
 		className?: string;
+    children?:any
 	}>();
 
 	const experiences = getExperiences();
@@ -72,7 +74,9 @@
 				{'-'}
 				<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>{/if}
 		</summary>
-		<div class="flex flex-col gap-y-4 pt-4"><slot /></div>
+		<div class="flex flex-col gap-y-4 pt-4 relative">
+{@render children()}
+    </div>
 	</details>
 {:else}
 	<details on:toggle|preventDefault={setChecked}>

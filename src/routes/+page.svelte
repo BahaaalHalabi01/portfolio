@@ -1,10 +1,9 @@
 <script lang="ts">
 	import ExperienceAccordion from '$src/components/experience-accordion.svelte';
-	import { ToggleLeft, Unlock, ToggleRight, Lock, ChevronsDown } from 'lucide-svelte';
+	import { ToggleLeft, Unlock, ToggleRight, Lock, ChevronsDown, ChevronsUp } from 'lucide-svelte';
 	import { initExperiences } from './experiences';
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
-	import type { MouseEventHandler } from 'svelte/elements';
 
 	export let data: PageData;
 	const { titles } = data;
@@ -47,15 +46,8 @@
 	};
 </script>
 
-<section class="flex gap-y-4 flex-col min-h-full relative" id="about">
-	<img
-		src="/linux.png"
-		class="bg-transparent absolute right-0 top-0 hover:scale-125 transition-all hover:rotate-12"
-		width={96}
-		height={96}
-		alt="linux"
-	/>
-	<p class="text-2xl">Welcome to my portfolio, my name is</p>
+<section class="flex gap-y-4 flex-col min-h-full relative scroll-my-32" id='about'>
+	<p class="text-2xl " >Welcome to my portfolio, my name is</p>
 	<h1 class="text-green-600 lg:text-7xl font-semibold">Bahaa al Halabi</h1>
 	<h2 class="lg:text-7xl lg:pb-6 font-medium">I turn ideas into cool web apps</h2>
 	<p class="text-stone-400 text-2xl lg:max-w-4xl">
@@ -100,10 +92,7 @@
 		>
 		as my preferred operating system.
 	</p>
-	<div class="py-6" />
-	<Button class="text-xl w-fit">Interested in More?</Button>
-
-	<div class="py-6" />
+	<div class="py-20" />
 	<a
 		href="#skills"
 		class="absolute bottom-4 right-0 w-fit hover:scale-125 transition-transform duration-300"
@@ -111,39 +100,158 @@
 	>
 </section>
 <div class="py-8" />
-<section class="scroll-m-16" id="skills">
+<section class="scroll-m-16 relative pb-8" id="skills">
+	<img
+		src="/linux.png"
+		class="bg-transparent absolute right-0 top-8 hover:scale-125 transition-all hover:rotate-12"
+		width={96}
+		height={96}
+		alt="linux"
+	/>
 	<h1 class="text-green-600 lg:text-6xl pr-8">My Skills</h1>
 	<div class="py-6" />
 	<div
-		class="grid grid-cols-3 rounded-md shadow-md px-12 gap-x-4 mx-auto py-8 bg-slate-700 place-content-center place-items-center"
+		class="grid grid-cols-3 rounded-md shadow-md px-12 py-8 bg-slate-700 place-content-center place-items-center max-w-6xl"
 	>
 		<div class="flex flex-col items-start justify-start h-full">
-			<p class='text-3xl pb-4 text-green-600 font-medium'>Front End</p>
-			<ul>
-				<li>Typescript,JsDoc</li>
-				<li>React, Svelte</li>
-				<li>NextJs, Sveltekit</li>
-				<li>Tailwindcss, MaterialUi,RadixUi</li>
-				<li>GraphQl, TanStack Query,tRPC</li>
-				<li>Redux, Redux Toolkit</li>
+			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
+				Front End
+			</p>
+			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Typescript,JsDoc
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					React, Svelte
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					NextJs, Sveltekit
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Prisma, AuthJs
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Tailwindcss, MaterialUi, RadixUi
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					GraphQl, TanStack Query, tRPC
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Redux, Redux Toolkit
+				</li>
 			</ul>
 		</div>
 		<div class="flex flex-col items-start justify-start h-full">
-			<p class='text-3xl pb-4 text-green-600 font-medium'>Back End</p>
-			<ul>
-				<li>NodeJs</li>
-				<li>Amazon Web Services</li>
-				<li>Serverless</li>
-				<li>Sql,No-Sql</li>
-				<li>Rust</li>
+			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
+				Tooling
+			</p>
+			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					NeoVim
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Linux
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Notion
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Git
+				</li>
 			</ul>
 		</div>
-		<div class="flex flex-col">Managment</div>
+
+		<div class="flex flex-col items-start justify-start h-full">
+			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
+				Back End
+			</p>
+			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					NodeJs
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Elastic Search
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Amazon Web Services
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Serverless
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Sql, MongoDb, DynamoDb
+				</li>
+				<li
+					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+				>
+					Rust
+				</li>
+			</ul>
+		</div>
 	</div>
+	<div class="pt-12">
+		<p class="italic font-bold max-w-6xl">
+			Watching many content creators helped me advance my career and take a leap and learn some of
+			the things above.
+		</p>
+		<p class="italic font-bold max-w-6xl">
+			Special thanks to
+			<a
+				href="https://www.twitch.tv/theprimeagen"
+				target="_blank"
+				rel="noreferrer"
+				class="text-green-600 text-2xl"
+			>
+				The Primeagen
+			</a>
+			and
+			<a href="https://t3.gg/" target="_blank" rel="noreferrer" class="text-green-600 text-2xl"> Theo</a> as these two
+      channels helped me understand the ecosystem from completly different point of views. Give them a follow, you will not 
+      regret it!
+	
+		</p>
+	</div>
+	<a
+		href="#experience"
+		class="absolute bottom-0 right-0 w-fit hover:scale-125 transition-transform duration-300"
+		><ChevronsDown class="w-28 h-14" /></a
+	>
 </section>
 
 <div class="py-16" />
-<section class="scroll-m-16" id="experience">
+<section class="scroll-m-16 relative" id="experience">
 	<h1 class="text-green-600 lg:text-6xl pr-8">My Work Experience</h1>
 	<div class="flex items-end gap-x-8 py-8">
 		<Button
@@ -334,11 +442,10 @@
 				</li>
 			</ul>
 		</ExperienceAccordion>
+		<a
+			href="#about"
+			class="absolute bottom-0 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
+			title="go to start"><ChevronsUp class="w-28 h-14" /></a
+		>
 	</div>
-
-	<a
-		href="#experience"
-		class="sticky bottom-4 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
-		><ChevronsDown class="w-28 h-14" /></a
-	>
 </section>
