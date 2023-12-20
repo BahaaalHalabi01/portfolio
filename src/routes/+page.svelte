@@ -3,13 +3,12 @@
 	import { ToggleLeft, Unlock, ToggleRight, Lock } from 'lucide-svelte';
 	import { initExperiences } from './experiences';
 	import Button from '$src/components/button.svelte';
+	import type { PageData } from './$types';
 
+	export let data: PageData;
+	const { titles } = data;
 	const experiences = initExperiences();
-	const titles = [
-		'Bedu, Remote - Tech Lead',
-		'Dox, Remote - Typescript Full Stack Developer',
-		'BankerWay, Remote - Temenos T24 Banking Technical Consultant'
-	];
+
 	const openAll = (event: MouseEvent) => {
 		const e = event as MouseEvent & { currentTarget: HTMLButtonElement };
 		const checked = e.currentTarget.dataset['open'];
@@ -17,7 +16,7 @@
 		else e.currentTarget.dataset['open'] = 'false';
 
 		titles.forEach((title) => {
-			checked === 'false' ? $experiences.delete(title) : $experiences.add(title);
+			checked === 'true' ? $experiences.delete(title) : $experiences.add(title);
 		});
 
 		$experiences = $experiences;
@@ -29,9 +28,7 @@
 		if (checked === 'false') e.currentTarget.dataset['open'] = 'true';
 		else e.currentTarget.dataset['open'] = 'false';
 
-
 		const limit = $experiences.has('lmt');
-
 
 		//we have already open experiences
 		const size = $experiences.size;
@@ -47,7 +44,6 @@
 		!!limit ? $experiences.delete('lmt') : $experiences.add('lmt');
 		$experiences = $experiences;
 	};
-
 </script>
 
 <section class="flex gap-y-4 flex-col min-h-full" id="about">
@@ -94,12 +90,13 @@
 </section>
 <div class="py-24" />
 <section class="" id="experience">
-	<h1 class="text-green-600 lg:text-6xl inline-block pr-8">My Experience</h1>
-	<div class="inline-flex items-end gap-x-8">
+	<h1 class="text-green-600 lg:text-6xl pr-8">My Work Experience</h1>
+	<div class="flex items-end gap-x-8 py-8">
 		<Button
 			onclick={openAll}
 			class="inline-flex gap-x-2 items-center group/tgl"
 			data-open="false"
+			id="tgl-all-btn"
 			title="power of data attributes"
 		>
 			<ToggleRight class="hidden group-data-[open=true]/tgl:inline-block h-8 w-8 fill-green-600" />
@@ -123,7 +120,7 @@
 		</Button>
 	</div>
 
-	<div class="flex gap-y-10 flex-col py-8">
+	<div class="flex gap-y-16 flex-col py-8">
 		<ExperienceAccordion label={titles[0]} website="bedu.me" href="https://bedu.me">
 			<p class="italic">October 2022 - December 2023 (1 year 2 months)</p>
 			<p class="text-xl">
@@ -164,7 +161,46 @@
 				communicate directly to the product owner/company owner for changes and progress
 			</p>
 		</ExperienceAccordion>
-		<ExperienceAccordion label={titles[1]} website="dox.tech" href="https://dox.tech">
+		<ExperienceAccordion label={titles[1]} href='https://qaff.com' website='qaff.com'>
+			<p class="italic">August 2023 - September 2023 (1 Month)</p>
+			<ul class="list-disc list-inside">
+				<li>
+					Implement an AI-assisted multi-stage form that takes some input from the user, sends it to
+					the lambda which then based on the results requires different input that has to be
+					rendered. Upon completing the data collection, the lambda will return a final result which
+					has to be integrated with the existing manual form.
+				</li>
+
+				<li>
+					Refactor class-based React components into functional, and extract logic and common ui
+					into their own components. - Implement designs using material-ui from figma and coordinate
+					with backend for needed apis
+				</li>
+				<li>Add documentation using JsDoc and Postman collections.</li>
+			</ul>
+		</ExperienceAccordion>
+		<ExperienceAccordion label={titles[2]}>
+			<p class="italic">July 2023 - September 2023 (3 Months)</p>
+      <p class='text-xl'>This project allowed me to try the new NextJs App Router and React Server Components in a production environment. 
+        As i had to make all the tech decisions, it was a good chance to test libraries that i already enjoyed working with locally (ex:prisma,authjs)</p>
+			<p class="text-xl">A summary of the tasks i did:</p>
+			<ul class="list-disc list-inside ">
+				<li>
+					Develop from scratch a NextJs ( Server Components) application that lets the user using a
+					flow board (Reactflow library) create a battery testing schema and interact with it using drag and drop.
+          </li>
+          <li>
+          Vizualize data in a table allowing you to edit,delete, and duplicate your testing schemas.
+				</li>
+				<li>Host the application, use PostgreSql with an Orm for the database (using Supabase).</li>
+				<li>
+					Write an api layer using traditional http routes in NextJs and fetch directly in Server
+					Components when possible.
+				</li>
+				<li>Authentication using session tokens with the help of AuthJs.</li>
+			</ul>
+		</ExperienceAccordion>
+		<ExperienceAccordion label={titles[3]} website="dox.tech" href="https://dox.tech">
 			<p class="italic">October 2021 - December 2022 (1 year)</p>
 			<p class="text-xl">
 				This was my first job, and it being in a startup environment, led me to learn a lot and work
@@ -172,7 +208,7 @@
 				was the first time i was challanged with real world problems after doing many
 				straight-forward tasks/youtube tutorials.
 			</p>
-			<p class="text-xl">A summary of tasks i did:</p>
+			<p class="text-xl">A summary of the tasks i did:</p>
 			<ul class="list-disc list-inside">
 				<li>
 					Developed a React front-end application using Typescript. Used ReactQuery for data
@@ -196,7 +232,7 @@
 			</ul>
 		</ExperienceAccordion>
 		<ExperienceAccordion
-			label={titles[2]}
+			label={titles[4]}
 			href={'https://bankerway.com/Main/about-2/'}
 			website="bankerway.com"
 		>
@@ -216,6 +252,27 @@
 				<li>
 					During the learning period, I was one of the highest performing students, held zoom
 					meetings to help tutor others. I was given a certificate and a job offer at the end.
+				</li>
+			</ul>
+		</ExperienceAccordion>
+		<ExperienceAccordion label={titles[5]}>
+			<p class="italic">June 2020 - September 2020 (4 Months)</p>
+			<p class="text-xl">
+				This was a beginner to intermiddiate level bootcamp that upon completion gives you a
+				certificate you can submit to university in order to finish a required course
+			</p>
+			<ul class="list-disc list-inside">
+				<li>
+					Receive hands-on web development training with React(hooks), Redux, Firebase, Git Heroku,
+					and MongoDb. Ended the bootcamp with developing a full-stack website.
+				</li>
+			</ul>
+		</ExperienceAccordion>
+		<ExperienceAccordion label={titles[6]}>
+			<p class="italic">July 2018 - August 2018 (2 Months)</p>
+			<ul class="list-disc list-inside">
+				<li>
+					Learn basics of javascript and web development, with a little of React class components
 				</li>
 			</ul>
 		</ExperienceAccordion>

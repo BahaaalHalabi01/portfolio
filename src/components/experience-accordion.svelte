@@ -55,14 +55,22 @@
 	};
 
 	const checked = $derived(!!$experiences.has(label));
+
+	const resetToggle = () => {
+		const tglAll = document.getElementById('tgl-all-btn') as HTMLButtonElement;
+		const data = tglAll.dataset['open'];
+		if (data === 'true') tglAll.dataset['open'] = 'false';
+	};
 </script>
 
 {#if checked}
-	<details open on:toggle|preventDefault={setChecked}>
+<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+	<details open on:toggle|preventDefault={setChecked} on:click={resetToggle}>
 		<summary class={cn('text-slate-300 max-w-fit text-3xl', className)}>
 			{label}
-			{'-'}
-			<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>
+			{#if href}
+				{'-'}
+				<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>{/if}
 		</summary>
 		<div class="flex flex-col gap-y-4 pt-4"><slot /></div>
 	</details>
@@ -70,8 +78,11 @@
 	<details on:toggle|preventDefault={setChecked}>
 		<summary class={cn('text-slate-300 max-w-fit text-3xl', className)}>
 			{label}
-			{'-'}
-			<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>
+
+			{#if href}
+				{'-'}
+				<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>
+			{/if}
 		</summary>
 	</details>
 {/if}
