@@ -230,7 +230,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="pt-12">
+	<div class="lg:pt-12 pt-8">
 		<p class="italic font-bold max-w-6xl">
 			Watching many content creators helped me advance my career and take a leap and learn some of
 			the things above.
@@ -254,15 +254,14 @@
 	</div>
 	<a
 		href="#experience"
-		class="absolute bottom-0 right-0 w-fit hover:scale-125 transition-transform duration-300"
+		class="absolute md:block hidden bottom-0 right-0 w-fit hover:scale-125 transition-transform duration-300"
 		><ChevronsDown class="w-28 h-14" /></a
 	>
 </section>
-
-<div class="py-16" />
+<div class="lg:py-16 py-8" />
 <section class="scroll-m-16 relative" id="experience">
-	<h1 class="text-green-600 lg:text-6xl pr-8">My Work Experience</h1>
-	<div class="flex items-end gap-x-8 py-8">
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">My Work Experience</h1>
+	<div class="flex flex-col md:flex-row items-start md:items-end lg:gap-x-8 lg:py-8 py-4 gap-y-4">
 		<Button
 			onclick={openAll}
 			class="inline-flex gap-x-2 items-center group/tgl"

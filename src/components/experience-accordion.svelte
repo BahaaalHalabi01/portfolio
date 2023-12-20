@@ -68,7 +68,7 @@
 {#if checked}
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 	<details open on:toggle|preventDefault={setChecked} on:click={resetToggle}>
-		<summary class={cn('text-slate-300 max-w-fit text-3xl', className)}>
+		<summary class={cn('text-slate-300 max-w-fit lg:text-3xl text-2xl', className)}>
 			{label}
 			{#if href}
 				{'-'}
@@ -80,7 +80,7 @@
 	</details>
 {:else}
 	<details on:toggle|preventDefault={setChecked}>
-		<summary class={cn('text-slate-300 max-w-fit text-3xl', className)}>
+		<summary class={cn('text-slate-300 max-w-fit lg:text-3xl text-2xl', className)}>
 			{label}
 
 			{#if href}
