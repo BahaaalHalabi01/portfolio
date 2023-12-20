@@ -108,19 +108,19 @@
 		><ChevronsDown class="w-28 h-14" /></a
 	>
 </section>
-<div class="py-8" />
+<div class="lg:py-8" />
 <section class="scroll-m-16 relative pb-8" id="skills">
 	<img
 		src="/linux.png"
-		class="bg-transparent absolute right-0 top-8 hover:scale-125 transition-all hover:rotate-12"
+		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12"
 		width={96}
 		height={96}
 		alt="linux"
 	/>
-	<h1 class="text-green-600 lg:text-6xl pr-8">My Skills</h1>
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">My Skills</h1>
 	<div class="py-6" />
 	<div
-		class="grid grid-cols-3 rounded-md shadow-md px-12 py-8 bg-slate-700 place-content-center place-items-center max-w-6xl"
+		class="grid lg:grid-cols-3 grid-cols-1 gap-y-6 rounded-md shadow-md lg:px-12 px-4 py-8 bg-slate-700 place-content-center lg:place-items-center max-w-6xl"
 	>
 		<div class="flex flex-col items-start justify-start h-full">
 			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
@@ -128,37 +128,37 @@
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
 				>
 					Typescript,JsDoc
 				</li>
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
 				>
 					React, Svelte
 				</li>
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
 				>
 					NextJs, Sveltekit
 				</li>
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
 				>
 					Prisma, AuthJs
 				</li>
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900 truncate"
 				>
 					Tailwindcss, MaterialUi, RadixUi
 				</li>
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
 				>
 					GraphQl, TanStack Query, tRPC
 				</li>
 				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
+					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
 				>
 					Redux, Redux Toolkit
 				</li>
