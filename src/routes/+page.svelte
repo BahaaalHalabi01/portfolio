@@ -5,7 +5,11 @@
 	import Button from '$src/components/button.svelte';
 
 	const experiences = initExperiences();
-	const titles = ['Bedu, Remote - Tech Lead', 'Dox, Remote - Typescript Full Stack Developer'];
+	const titles = [
+		'Bedu, Remote - Tech Lead',
+		'Dox, Remote - Typescript Full Stack Developer',
+		'BankerWay, Remote - Temenos T24 Banking Technical Consultant'
+	];
 	const openAll = (event: MouseEvent) => {
 		const e = event as MouseEvent & { currentTarget: HTMLButtonElement };
 		const checked = e.currentTarget.dataset['open'];
@@ -13,8 +17,7 @@
 		else e.currentTarget.dataset['open'] = 'false';
 
 		titles.forEach((title) => {
-			const open = $experiences.get(title);
-			$experiences.set(title, !open);
+			checked === 'false' ? $experiences.delete(title) : $experiences.add(title);
 		});
 
 		$experiences = $experiences;
@@ -26,11 +29,25 @@
 		if (checked === 'false') e.currentTarget.dataset['open'] = 'true';
 		else e.currentTarget.dataset['open'] = 'false';
 
-		const limit = $experiences.get('lmt');
-		$experiences.set('lmt', !!!limit);
 
+		const limit = $experiences.has('lmt');
+
+
+		//we have already open experiences
+		const size = $experiences.size;
+		if (size > 1 && checked === 'false') {
+			for (let i = titles.length - 1; ; i--) {
+				const title = titles[i];
+				$experiences.delete(title);
+				const current = $experiences.size;
+				if (current === 1) break;
+			}
+		}
+
+		!!limit ? $experiences.delete('lmt') : $experiences.add('lmt');
 		$experiences = $experiences;
 	};
+
 </script>
 
 <section class="flex gap-y-4 flex-col min-h-full" id="about">
@@ -91,12 +108,12 @@
 		</Button>
 		<Button
 			onclick={limitOne}
-			title="power of stores"
+			title="power of stores and context"
 			class="items-center text-center gap-x-2 inline-flex justify-center group/lmt"
 			data-open="false"
 		>
-			<Lock class="hidden group-data-[open=true]/lmt:inline-block" />
-			<Unlock class="inline-block group-data-[open=true]/lmt:hidden" />
+			<Unlock class="hidden group-data-[open=true]/lmt:inline-block" />
+			<Lock class="inline-block group-data-[open=true]/lmt:hidden" />
 			<span class="inline-block group-data-[open=true]/lmt:hidden">
 				Limit to One Open at A time
 			</span>
@@ -175,6 +192,30 @@
 				<li>Administered infrastructure on AWS ( using kubernetes, and amazon console)</li>
 				<li>
 					Maintained and upgraded a microservices architecture using node and routing-controllers.
+				</li>
+			</ul>
+		</ExperienceAccordion>
+		<ExperienceAccordion
+			label={titles[2]}
+			href={'https://bankerway.com/Main/about-2/'}
+			website="bankerway.com"
+		>
+			<p class="italic">September 2021 (1 Month)</p>
+			<p class="text-xl">
+				This was a training i took to get an idea of the fintech world, helping me choose my path as
+				a developer.
+			</p>
+			<p class="text-xl">During my training:</p>
+
+			<ul class="list-disc list-inside">
+				<li>
+					Underwent Temenos T24 banking system training. Used and developed code for the T24 system
+					using JBASIC and TAFJ framework that enables customization on basic banking features in
+					Temenos T24.
+				</li>
+				<li>
+					During the learning period, I was one of the highest performing students, held zoom
+					meetings to help tutor others. I was given a certificate and a job offer at the end.
 				</li>
 			</ul>
 		</ExperienceAccordion>

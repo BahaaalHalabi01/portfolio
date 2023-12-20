@@ -7,14 +7,14 @@ enum Keys {
 }
 
 function initExperiences() {
-  const openedSet = new Map<string,boolean>()
+  const openedSet = new Set<string>()
   const store = writable(openedSet)
   setContext(Keys.Experience, store)
   return store
 }
 
 function getExperiences() {
-  return getContext<Writable<Map<string,boolean>>>(Keys.Experience)
+  return getContext<Writable<Set<string>>>(Keys.Experience)
 }
 
 export { initExperiences, getExperiences }
