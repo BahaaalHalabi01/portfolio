@@ -24,7 +24,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        'sans': ['"EB Garamond"', ...defaultTheme.fontFamily.sans],
+
       },
       colors: {
         'svelte': '#ff4700'

@@ -13,7 +13,7 @@
 	];
 </script>
 
-<main class="container w-full mx-auto flex flex-col grow min-h-screen relative">
+<main class="container w-full mx-auto flex flex-col grow min-h-screen relative ">
 	<nav class="flex items-center justify-between h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900">
 		<span class="inline-flex gap-x-2 items-center p-2">
 			<BugPlay />
@@ -32,7 +32,7 @@
 			<a class="border-green-600 border-2 p-2" href="/resume">Checkout My Resume!</a>
 		</div>
 	</nav>
-	<div class="lg:px-24 py-12">
+	<div class="lg:px-24 py-12 snap-both snap-always">
 		<slot />
 	</div>
 
