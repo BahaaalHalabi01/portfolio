@@ -46,56 +46,65 @@
 	};
 </script>
 
-<section class="flex gap-y-4 flex-col min-h-full relative scroll-my-32" id='about'>
-	<p class="text-2xl " >Welcome to my portfolio, my name is</p>
-	<h1 class="text-green-600 lg:text-7xl font-semibold">Bahaa al Halabi</h1>
-	<h2 class="lg:text-7xl lg:pb-6 font-medium">I turn ideas into cool web apps</h2>
-	<p class="text-stone-400 text-2xl lg:max-w-4xl">
+<section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
+	<p class="lg:text-2xl text-xl">Welcome to my portfolio, my name is</p>
+	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">Bahaa al Halabi</h1>
+	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl">I turn ideas into cool web apps</h2>
+	<p class="text-stone-400 lg:text-2xl lg:max-w-4xl">
 		I am a middle+ full stack web developer. I mainly use <span
-			class="text-green-600 italic text-3xl">Typescript</span
-		>,&nbsp;
-		<span class="text-green-600 italic text-3xl">React</span>,&nbsp;and&nbsp;<span
-			class="text-green-600 italic text-3xl">NextJs</span
+			class="text-green-600 italic lg:text-3xl text-2xl">Typescript</span
+		>,
+		<span class="text-green-600 italic lg:text-3xl text-2xl">React</span>,{' '}and{' '}<span
+			class="text-green-600 italic text-2xl lg:text-3xl">NextJs</span
 		>
 		to build my frontend apps, and
-		<span class="text-3xl text-green-600 italic">NodeJs</span> with various
-		<span class="text-green-600 italic text-3xl">Amazon Web Services</span> for the backend. I worked
-		up until now exclusivly with startups, constantly taking on difficult tasks outside of my scope,
-		enabling me to grow significantly.
+		<span class="text-2xl lg:text-3xl text-green-600 italic">NodeJs</span> with various
+		<span class="text-green-600 italic lg:text-3xl text-2xl">Amazon Web Services</span> for the backend.
+		I worked up until now exclusivly with startups, constantly taking on difficult tasks outside of my
+		scope, enabling me to grow significantly.
 	</p>
-	<p class="text-stone-400 text-2xl lg:max-w-4xl">
+	<p class="text-stone-400 lg:text-2xl lg:max-w-4xl">
 		I would like to believe that i am not a <q>React Developer</q>, and that i understand the
 		fundementals of programming well, enabling me to dive into other technologies.
-		<span class="text-green-600 text-3xl italic">Rust</span>
-		and <span class="text-svelte text-3xl italic">Svelte</span> being on top of the list.
+		<span class="text-green-600 lg:text-3xl text-2xl italic">Rust</span>
+		and <span class="text-svelte text-2xl lg:text-3xl italic">Svelte</span> being on top of the list.
 	</p>
 
-	<p class="text-stone-400 text-xl lg:max-w-4xl">
-		This website was built with my favorite meta framework
+	<p class="text-stone-400 lg:text-2xl lg:max-w-4xl">
+		This website was built using my favorite meta framework
 		<a
 			target="_blank"
 			rel="noreferrer"
-			class="text-svelte italic text-3xl"
+			class="text-svelte italic text-2xl lg:text-3xl"
 			href="https://kit.svelte.dev">SvelteKit</a
-		>, written using the&nbsp;<span class="italic text-3xl">superior</span>&nbsp;text editor
+		>, with
 		<a
-			class="text-green-600 italic text-3xl"
+			href="https://svelte-5-preview.vercel.app/docs/introduction"
+			target="_blank"
+			rel="noreferrer"
+			class="text-svelte italic text-2xl lg:text-3xl"
+			>Svelte5
+		</a>
+		written using the&nbsp;<span class="italic text-2xl lg:text-3xl">superior</span>&nbsp;text
+		editor
+		<a
+			class="text-green-600 italic text-2xl lg:text-3xl"
 			href="https://neovim.io/"
 			target="_blank"
 			rel="noreferrer">{' '}NeoVim</a
 		>. I use
 		<a
-			class="text-3xl italic text-green-600"
+			class="lg:text-3xl italic text-green-600 text-2xl"
 			href="https://pop.system76.com/"
 			target="_blank"
 			rel="noreferrer">linux{' '}</a
 		>
 		as my preferred operating system.
 	</p>
-	<div class="py-20" />
+	<div class="lg:py-20 py-8" />
 	<a
 		href="#skills"
-		class="absolute bottom-4 right-0 w-fit hover:scale-125 transition-transform duration-300"
+		class="absolute md:block hidden bottom-4 right-0 w-fit hover:scale-125 transition-transform duration-300"
 		><ChevronsDown class="w-28 h-14" /></a
 	>
 </section>
@@ -237,10 +246,10 @@
 				The Primeagen
 			</a>
 			and
-			<a href="https://t3.gg/" target="_blank" rel="noreferrer" class="text-green-600 text-2xl"> Theo</a> as these two
-      channels helped me understand the ecosystem from completly different point of views. Give them a follow, you will not 
-      regret it!
-	
+			<a href="https://t3.gg/" target="_blank" rel="noreferrer" class="text-green-600 text-2xl">
+				Theo</a
+			> as these two channels helped me understand the ecosystem from completly different point of views.
+			Give them a follow, you will not regret it!
 		</p>
 	</div>
 	<a
