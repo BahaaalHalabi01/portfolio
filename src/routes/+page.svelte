@@ -4,6 +4,7 @@
 	import { initExperiences } from './experiences';
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
+  import NeoVim from '$lib/icons/neovim.svelte'
 
 	export let data: PageData;
 	const { titles } = data;
@@ -47,6 +48,16 @@
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
+<img
+		src="/svelte.png"
+		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12 md:block hidden"
+		width={96}
+		height={96}
+		alt="linux"
+	/>
+<NeoVim
+
+	/>
 	<p class="lg:text-2xl text-xl">Welcome to my portfolio, my name is</p>
 	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">Bahaa al Halabi</h1>
 	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl">I turn ideas into cool web apps</h2>
@@ -113,6 +124,13 @@
 	<img
 		src="/linux.png"
 		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12"
+		width={96}
+		height={96}
+		alt="linux"
+	/>
+<img
+		src="/svelte.png"
+		class="bg-transparent absolute right-24 -top-4 hover:scale-125 transition-all hover:rotate-12 md:hidden block"
 		width={96}
 		height={96}
 		alt="linux"
@@ -457,3 +475,7 @@
 		>
 	</div>
 </section>
+
+<div class="lg:py-16 py-8" />
+  <section id='contact-me'>
+  </section>
