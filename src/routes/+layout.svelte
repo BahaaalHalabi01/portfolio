@@ -2,15 +2,22 @@
 	import Telegram from '$src/lib/icons/telegram.svelte';
 	import '../app.css';
 	import { AtSign, BugPlay, Github, Instagram, Linkedin, Twitter } from 'lucide-svelte';
+	import { locale, locales, t } from '$lib/translations/i18n';
 
-	const headers = [
-		{ href: '/about', label: 'about' },
-		{ href: '/experience', label: 'experience' },
-		{ href: '/work', label: 'work' },
-		{ href: '/contact', label: 'contact' }
+	const getHeaders = () => [
+		{ href: '/about', label: $t('nav.about') },
+		{ href: '/experience', label: $t('nav.experience') },
+		{ href: '/work', label: $t('nav.work') },
+		{ href: '/contact', label: $t('nav.contact') }
 	];
+	let headers = getHeaders();
+
 	const comingSoon = () => {
 		alert('My apologies,I do not have those social media yet!');
+	};
+
+	const setLocale = () => {
+		headers = getHeaders();
 	};
 </script>
 
@@ -18,10 +25,17 @@
 	<nav
 		class="lg:flex items-center justify-between lg:h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900 z-20 lg:py-0 py-2"
 	>
-		<a class="inline-flex gap-x-2 items-center p-2" href='/'>
-			<BugPlay />
-			Bahaa al Halabi
-		</a>
+		<div class="flex items-center gap-x-8">
+			<a class="inline-flex gap-x-2 items-center p-2" href="/">
+				<BugPlay />
+				Bahaa al Halabi
+			</a>
+			<select bind:value={$locale} class="bg-transparent" on:change={setLocale}>
+				{#each locales as l}
+					<option value={l}>{l}</option>
+				{/each}
+			</select>
+		</div>
 
 		<a
 			class="border-green-600 border-2 p-2 inline-block lg:hidden float-right"
