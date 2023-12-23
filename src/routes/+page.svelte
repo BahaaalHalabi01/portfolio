@@ -4,8 +4,8 @@
 	import { initExperiences } from './experiences';
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
-  import NeoVim from '$lib/icons/neovim.svelte'
-  import {t} from '$lib/translations/i18n'
+	import NeoVim from '$lib/icons/neovim.svelte';
+	import { t } from '$lib/translations/i18n';
 
 	export let data: PageData;
 	const { titles } = data;
@@ -49,65 +49,62 @@
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
-<img
+	<img
 		src="/svelte.png"
 		class="bg-transparent absolute right-0 lg:top-8 md:top-16 top-0 hover:scale-125 transition-all hover:rotate-12 md:block hidden"
 		width={96}
 		height={96}
 		alt="linux"
 	/>
-<NeoVim
-
-	/>
+	<NeoVim />
 	<p class="lg:text-2xl text-xl">{$t('homepage.welcome')}</p>
 	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{$t('name')}</h1>
 	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{$t('homepage.welcome-sub')}</h2>
 	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
-		{$t('homepage.about-0')} <span
-			class="text-green-600 italic lg:text-3xl text-2xl">Typescript</span
-		>,
-		<span class="text-green-600 italic lg:text-3xl text-2xl">React</span>,{' '}{$t('and')}{' '}<span
-			class="text-green-600 italic text-2xl lg:text-3xl">NextJs</span
-		>
-    {$t('homepage.about-1')}
-		<span class="text-2xl lg:text-3xl text-green-600 italic">NodeJs</span> {$t('homepage.about-2')}
-		<span class="text-green-600 italic lg:text-3xl text-2xl">Amazon Web Services</span> {$t('homepage.about-3')}.
-    {$t('homepage.about-4')}
+		{$t('homepage.about-0')}
+		<a href="https://www.typescriptlang.org" target="_blank" class="important-link">Typescript</a>,
+		<a class=" important-link" href="https://react.dev" target="_blank">React</a>,{' '}{$t(
+			'and'
+		)}{' '}
+		<a class="important-link" href="https://nextjs.org" target="_blank">NextJs</a>
+		{$t('homepage.about-1')}
+		<a class="important-link" href="https://nodejs.org" target="_blank">NodeJs</a>
+		{$t('homepage.about-2')}
+		<a class="important-link" href="https://aws.amazon.com" target="_blank">Amazon Web Services</a>
+		{$t('homepage.about-3')}.
+		{$t('homepage.about-4')}
 	</p>
 	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
-    {$t('homepage.about-5')} <q>React {$t('developer')}</q>, {$t('homepage.about-6')} 
-		<span class="text-green-600 lg:text-3xl text-2xl italic">Rust</span>
-    {$t('and')} <span class="text-green-600 text-2xl lg:text-3xl italic">Svelte</span> {$t('homepage.about-7')}
+		{$t('homepage.about-5')} <q>React {$t('developer')}</q>, {$t('homepage.about-6')}
+		<a class="important-link" href="https://www.rust-lang.org/" target="_blank">Rust</a>
+		{$t('and')} <a class="important-link" href="https://svelte.dev/" target="_blank">Svelte</a>
+		{$t('homepage.about-7')}
 	</p>
 
 	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
-    {$t('homepage.about-8')}
-		<a
-			target="_blank"
-			rel="noreferrer"
-			class="text-green-600 italic text-2xl lg:text-3xl"
-			href="https://kit.svelte.dev">SvelteKit</a
+		{$t('homepage.about-8')}
+		<a target="_blank" rel="noreferrer" class="important-link" href="https://kit.svelte.dev"
+			>SvelteKit</a
 		>, {$t('with')}
 		<a
 			href="https://svelte-5-preview.vercel.app/docs/introduction"
 			target="_blank"
 			rel="noreferrer"
-			class="text-green-600 italic text-2xl lg:text-3xl"
+			class="important-link"
 			>Svelte5
 		</a>
-    {$t('homepage.about-9')}&nbsp;<span class="italic text-2xl lg:text-3xl">{$t('superior')}</span>&nbsp;{$t('text-editor')}<a
-			class="text-green-600 italic text-2xl lg:text-3xl"
+		{$t('homepage.about-9')}&nbsp;<span class="important-link hover:no-underline"
+			>{$t('superior')}</span
+		>&nbsp;{$t('text-editor')}<a
+			class="important-link"
 			href="https://neovim.io/"
 			target="_blank"
 			rel="noreferrer">{' '}NeoVim</a
 		>. {$t('homepage.about-10')}
-		<a
-			class="lg:text-3xl italic text-green-600 text-2xl"
-			href="https://pop.system76.com/"
-			target="_blank"
-			rel="noreferrer">Linux{' '}</a
+		<a class="important-link" href="https://pop.system76.com/" target="_blank" rel="noreferrer"
+			>Linux{' '}</a
 		>
-    {$t('homepage.about-11')}
+		{$t('homepage.about-11')}
 	</p>
 	<div class="lg:py-20 py-8" />
 	<a
@@ -125,7 +122,7 @@
 		height={96}
 		alt="linux"
 	/>
-<img
+	<img
 		src="/svelte.png"
 		class="bg-transparent absolute right-24 -top-4 hover:scale-125 transition-all hover:rotate-12 md:hidden block"
 		width={96}
@@ -138,110 +135,42 @@
 		class="grid lg:grid-cols-3 grid-cols-1 gap-y-6 rounded-md shadow-md lg:px-12 px-4 py-8 bg-slate-700 place-content-center lg:place-items-center max-w-6xl"
 	>
 		<div class="flex flex-col items-start justify-start h-full">
-			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
+			<p class="text-3xl pb-2 text-green-600 font-medium  w-full">
 				Front End
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Typescript,JsDoc
-				</li>
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					React, Svelte
-				</li>
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					NextJs, Sveltekit
-				</li>
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Prisma, AuthJs
-				</li>
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900 truncate"
-				>
-					Tailwindcss, MaterialUi, RadixUi
-				</li>
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					GraphQl, TanStack Query, tRPC
-				</li>
-				<li
-					class="lg:text-xl text-lg rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Redux, Redux Toolkit
-				</li>
+				<li class=" skill-li">Typescript,JsDoc</li>
+				<li class=" skill-li">React, Svelte</li>
+				<li class=" skill-li">NextJs, Sveltekit</li>
+				<li class=" skill-li">Prisma, AuthJs</li>
+				<li class=" skill-li truncate">Tailwindcss, MaterialUi, RadixUi</li>
+				<li class=" skill-li">GraphQl, TanStack Query, tRPC</li>
+				<li class=" skill-li">Redux, Redux Toolkit</li>
 			</ul>
 		</div>
 		<div class="flex flex-col items-start justify-start h-full">
-			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
+			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
 				Tooling
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					NeoVim
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Linux
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Notion
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Git
-				</li>
+				<li class="skill-li">NeoVim</li>
+				<li class="skill-li">Linux</li>
+				<li class="skill-li">Notion</li>
+				<li class="skill-li">Git</li>
 			</ul>
 		</div>
 
 		<div class="flex flex-col items-start justify-start h-full">
-			<p class="text-3xl pb-2 text-green-600 font-medium border-b-2 border-green-600 w-full">
+			<p class="text-3xl pb-2 text-green-600 w-full">
 				Back End
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					NodeJs
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Elastic Search
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Amazon Web Services
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Serverless
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Sql, MongoDb, DynamoDb
-				</li>
-				<li
-					class="text-xl rounded-full border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900"
-				>
-					Rust
-				</li>
+				<li class="skill-li">NodeJs</li>
+				<li class="skill-li">Elastic Search</li>
+				<li class="skill-li">Amazon Web Services</li>
+				<li class=" skill-li">Serverless</li>
+				<li class=" skill-li">Sql, MongoDb, DynamoDb</li>
+				<li class=" skill-li">Rust</li>
 			</ul>
 		</div>
 	</div>
@@ -474,5 +403,4 @@
 </section>
 
 <div class="lg:py-16 py-8" />
-  <section id='contact-me'>
-  </section>
+<section id="contact-me"></section>

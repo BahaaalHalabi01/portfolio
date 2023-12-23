@@ -4,11 +4,25 @@
 @tailwind utilities;
 
 @layer base {
+
   html {
     @apply bg-slate-900 text-slate-300 p-0 m-0 scroll-smooth;
   }
   body {
     @apply lg:text-lg font-sans ;
   }
+
+}
+
+@layer utilities {
+
+  .important-link {
+    @apply lg:text-3xl text-2xl text-green-600 font-bold hover:underline
+  }
+
+  .skill-li {
+  @apply lg:text-xl text-lg rounded-lg border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900
+  }
+
 }
 
