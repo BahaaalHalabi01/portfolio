@@ -1,13 +1,14 @@
 <script lang="ts">
 	import ExperienceAccordion from '$src/components/experience-accordion.svelte';
-	import { ToggleLeft, Unlock, ToggleRight, Lock, ChevronsDown, ChevronsUp } from 'lucide-svelte';
+	import { ToggleLeft, Unlock, ToggleRight, Lock, ChevronsUp } from 'lucide-svelte';
 	import { initExperiences } from './experiences';
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
 	import NeoVim from '$lib/icons/neovim.svelte';
-	import { t } from '$lib/translations/i18n';
+	import type {  TTranslationKeys } from '$src/lib/translations/translations';
+	import { getTranslations } from '$src/lib/translations/i18n';
 
-	export let data: PageData;
+	let { data } = $props<{ data: PageData }>();
 	const { titles } = data;
 	const experiences = initExperiences();
 
@@ -46,6 +47,9 @@
 		!!limit ? $experiences.delete('lmt') : $experiences.add('lmt');
 		$experiences = $experiences;
 	};
+
+  const translate = getTranslations()
+	const t = (key: TTranslationKeys) => $translate(key, data.locale)
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
@@ -57,35 +61,35 @@
 		alt="linux"
 	/>
 	<NeoVim />
-	<p class="lg:text-2xl text-xl">{$t('homepage.welcome')}</p>
-	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{$t('name')}</h1>
-	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{$t('homepage.welcome-sub')}</h2>
+	<p class="lg:text-2xl text-xl">{t('homepage.welcome')}</p>
+	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{t('name')}</h1>
+	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{t('homepage.welcome-sub')}</h2>
 	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
-		{$t('homepage.about-0')}
+		{t('homepage.about-0')}
 		<a href="https://www.typescriptlang.org" target="_blank" class="important-link">Typescript</a>,
-		<a class=" important-link" href="https://react.dev" target="_blank">React</a>,{' '}{$t(
+		<a class=" important-link" href="https://react.dev" target="_blank">React</a>,{' '}{t(
 			'and'
 		)}{' '}
 		<a class="important-link" href="https://nextjs.org" target="_blank">NextJs</a>
-		{$t('homepage.about-1')}
+		{t('homepage.about-1')}
 		<a class="important-link" href="https://nodejs.org" target="_blank">NodeJs</a>
-		{$t('homepage.about-2')}
+		{t('homepage.about-2')}
 		<a class="important-link" href="https://aws.amazon.com" target="_blank">Amazon Web Services</a>
-		{$t('homepage.about-3')}.
-		{$t('homepage.about-4')}
+		{t('homepage.about-3')}.
+		{t('homepage.about-4')}
 	</p>
 	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
-		{$t('homepage.about-5')} <q>React {$t('developer')}</q>, {$t('homepage.about-6')}
+		{t('homepage.about-5')} <q>React {t('developer')}</q>, {t('homepage.about-6')}
 		<a class="important-link" href="https://www.rust-lang.org/" target="_blank">Rust</a>
-		{$t('and')} <a class="important-link" href="https://svelte.dev/" target="_blank">Svelte</a>
-		{$t('homepage.about-7')}
+		{t('and')} <a class="important-link" href="https://svelte.dev/" target="_blank">Svelte</a>
+		{t('homepage.about-7')}
 	</p>
 
 	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
-		{$t('homepage.about-8')}
+		{t('homepage.about-8')}
 		<a target="_blank" rel="noreferrer" class="important-link" href="https://kit.svelte.dev"
 			>SvelteKit</a
-		>, {$t('with')}
+		>, {t('with')}
 		<a
 			href="https://svelte-5-preview.vercel.app/docs/introduction"
 			target="_blank"
@@ -93,18 +97,18 @@
 			class="important-link"
 			>Svelte5
 		</a>
-		{$t('homepage.about-9')}&nbsp;<span class="important-link hover:no-underline"
-			>{$t('superior')}</span
-		>&nbsp;{$t('text-editor')}<a
+		{t('homepage.about-9')}&nbsp;<span class="important-link hover:no-underline"
+			>{t('superior')}</span
+		>&nbsp;{t('text-editor')}<a
 			class="important-link"
 			href="https://neovim.io/"
 			target="_blank"
 			rel="noreferrer">{' '}NeoVim</a
-		>. {$t('homepage.about-10')}
+		>. {t('homepage.about-10')}
 		<a class="important-link" href="https://pop.system76.com/" target="_blank" rel="noreferrer"
 			>Linux{' '}</a
 		>
-		{$t('homepage.about-11')}
+		{t('homepage.about-11')}
 	</p>
 </section>
 <div class="lg:py-20 py-8" />
@@ -123,14 +127,14 @@
 		height={96}
 		alt="linux"
 	/>
-	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{$t('skills.title')}</h1>
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('skills.title')}</h1>
 	<div class="py-6" />
 	<div
 		class="grid lg:grid-cols-3 grid-cols-1 gap-y-6 rounded-md shadow-md lg:px-12 px-4 py-8 bg-slate-700 place-content-center lg:place-items-center max-w-6xl"
 	>
 		<div class="flex flex-col items-start justify-start h-full">
 			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
-				{$t('skills.front')}
+				{t('skills.front')}
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li class=" skill-li">Typescript,JsDoc</li>
@@ -144,7 +148,7 @@
 		</div>
 		<div class="flex flex-col items-start justify-start h-full">
 			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
-				{$t('skills.tooling')}
+				{t('skills.tooling')}
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li class="skill-li">NeoVim</li>
@@ -156,7 +160,7 @@
 
 		<div class="flex flex-col items-start justify-start h-full">
 			<p class="text-3xl pb-2 text-green-600 w-full">
-				{$t('skills.backend')}
+				{t('skills.backend')}
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li class="skill-li">NodeJs</li>
@@ -171,10 +175,10 @@
 	</div>
 	<div class="lg:pt-12 pt-8">
 		<p class="italic font-bold max-w-6xl">
-			{$t('skills.thanks')}
+			{t('skills.thanks')}
 		</p>
 		<p class="italic font-bold max-w-6xl">
-			{$t('skills.thanks-0')}
+			{t('skills.thanks-0')}
 			<a
 				href="https://www.twitch.tv/theprimeagen"
 				target="_blank"
@@ -183,17 +187,17 @@
 			>
 				The Primeagen
 			</a>
-			{$t('and')}
+			{t('and')}
 			<a href="https://t3.gg/" target="_blank" rel="noreferrer" class="text-green-600 text-2xl">
 				Theo</a
 			>
-			{$t('skills.thanks-1')}
+			{t('skills.thanks-1')}
 		</p>
 	</div>
 </section>
 <div class="lg:py-16 py-8" />
 <section class="scroll-m-16 relative" id="experience">
-	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">My Work Experience</h1>
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('exp.title')}</h1>
 	<div class="flex flex-col md:flex-row items-start md:items-end lg:gap-x-8 lg:py-8 py-4 gap-y-4">
 		<Button
 			onclick={openAll}

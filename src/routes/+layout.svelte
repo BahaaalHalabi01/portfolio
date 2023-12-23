@@ -1,16 +1,26 @@
-<script>
+<script lang="ts">
 	import Telegram from '$src/lib/icons/telegram.svelte';
 	import '../app.css';
 	import { AtSign, BugPlay, Github, Instagram, Linkedin, Twitter } from 'lucide-svelte';
-	import { locale, locales, t } from '$lib/translations/i18n';
+	import { browser } from '$app/environment';
+	import type { TTranslationKeys } from '$src/lib/translations/translations';
+	import type { LayoutData } from './$types';
+	import { createLocale, createTranslations, locales } from '$src/lib/translations/i18n';
+
+	let { data } = $props<{ data: LayoutData }>();
 
 	const getHeaders = () => [
-		{ href: '/about', label: $t('nav.about') },
-		{ href: '/experience', label: $t('nav.experience') },
-		{ href: '/work', label: $t('nav.work') },
-		{ href: '/contact', label: $t('nav.contact') }
+		{ href: '/about', label: t('nav.about') },
+		{ href: '/experience', label: t('nav.experience') },
+		{ href: '/work', label: t('nav.work') },
+		{ href: '/contact', label: t('nav.contact') }
 	];
-	let headers = getHeaders();
+
+  const locale = createLocale(data.locale)
+  const translate = createTranslations()
+	const t = (key: TTranslationKeys) => $translate(key, data.locale)
+
+	let headers = $state(getHeaders());
 
 	const comingSoon = () => {
 		alert('My apologies,I do not have those social media yet!');
@@ -19,6 +29,7 @@
 	const setLocale = () => {
 		headers = getHeaders();
 	};
+
 </script>
 
 <main class="container w-full mx-auto flex flex-col grow min-h-screen relative">
@@ -28,19 +39,21 @@
 		<div class="flex items-center gap-x-8">
 			<a class="inline-flex gap-x-2 items-center p-2" href="/">
 				<BugPlay />
-        {$t('name')}
+				{t('name')}
 			</a>
-			<select bind:value={$locale} class="bg-transparent" on:change={setLocale}>
-				{#each locales as l}
-					<option value={l}>{l}</option>
-				{/each}
-			</select>
+			{#if browser}
+				<select bind:value={$locale} class="bg-transparent" on:change={setLocale}>
+					{#each locales as l}
+						<option value={l}>{l}</option>
+					{/each}
+				</select>
+			{/if}
 		</div>
 
 		<a
 			class="border-green-600 border-2 p-2 inline-block lg:hidden float-right"
 			href="/Bahaa_al_Halabi.pdf"
-			download={'Bahaa_al_Halabi.pdf'}>{$t('nav.resume-re')}</a
+			download={'Bahaa_al_Halabi.pdf'}>{t('nav.resume-re')}</a
 		>
 
 		<div
@@ -58,7 +71,7 @@
 			<a
 				class="border-green-600 border-2 p-2 hidden lg:block"
 				href="/Bahaa_al_Halabi.pdf"
-				download={'Bahaa_al_Halabi.pdf'}>{$t('nav.resume')}</a
+				download={'Bahaa_al_Halabi.pdf'}>{t('nav.resume')}</a
 			>
 		</div>
 	</nav>
@@ -66,9 +79,7 @@
 		<slot />
 	</div>
 
-	<div
-		class="lg:sticky hidden  bottom-0 md:flex flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900 "
-	>
+	<div class="lg:sticky hidden bottom-0 md:flex flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900">
 		<a
 			href="https://github.com/BahaaalHalabi01"
 			class="hover:scale-125 transition-transform duration-300 ease-out"

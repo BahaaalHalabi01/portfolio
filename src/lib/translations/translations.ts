@@ -34,8 +34,10 @@ const translations = {
     'skills.thanks-1':"as these two channels helped me understand the ecosystem from completely different point of views. Give them a follow, you will not regret it!",
     "skills.tooling": "Tooling",
     "skills.backend": "Backend",
+    "exp.title": "My Work Experience",
   },
   ru: {
+    "exp.title": "Мой опыт работы",
     'and': 'и',
     'with': 'с',
     'superior': 'начальство',
