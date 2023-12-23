@@ -106,14 +106,8 @@
 		>
 		{$t('homepage.about-11')}
 	</p>
-	<div class="lg:py-20 py-8" />
-	<a
-		href="#skills"
-		class="absolute md:block hidden bottom-4 right-0 w-fit hover:scale-125 transition-transform duration-300"
-		><ChevronsDown class="w-28 h-14" /></a
-	>
 </section>
-<div class="lg:py-8" />
+<div class="lg:py-20 py-8" />
 <section class="scroll-m-16 relative pb-8" id="skills">
 	<img
 		src="/linux.png"
@@ -129,14 +123,14 @@
 		height={96}
 		alt="linux"
 	/>
-	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">My Skills</h1>
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{$t('skills.title')}</h1>
 	<div class="py-6" />
 	<div
 		class="grid lg:grid-cols-3 grid-cols-1 gap-y-6 rounded-md shadow-md lg:px-12 px-4 py-8 bg-slate-700 place-content-center lg:place-items-center max-w-6xl"
 	>
 		<div class="flex flex-col items-start justify-start h-full">
-			<p class="text-3xl pb-2 text-green-600 font-medium  w-full">
-				Front End
+			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
+				{$t('skills.front')}
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li class=" skill-li">Typescript,JsDoc</li>
@@ -150,7 +144,7 @@
 		</div>
 		<div class="flex flex-col items-start justify-start h-full">
 			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
-				Tooling
+				{$t('skills.tooling')}
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li class="skill-li">NeoVim</li>
@@ -162,7 +156,7 @@
 
 		<div class="flex flex-col items-start justify-start h-full">
 			<p class="text-3xl pb-2 text-green-600 w-full">
-				Back End
+				{$t('skills.backend')}
 			</p>
 			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
 				<li class="skill-li">NodeJs</li>
@@ -171,16 +165,16 @@
 				<li class=" skill-li">Serverless</li>
 				<li class=" skill-li">Sql, MongoDb, DynamoDb</li>
 				<li class=" skill-li">Rust</li>
+				<li class=" skill-li">Jest</li>
 			</ul>
 		</div>
 	</div>
 	<div class="lg:pt-12 pt-8">
 		<p class="italic font-bold max-w-6xl">
-			Watching many content creators helped me advance my career and take a leap and learn some of
-			the things above.
+			{$t('skills.thanks')}
 		</p>
 		<p class="italic font-bold max-w-6xl">
-			Special thanks to
+			{$t('skills.thanks-0')}
 			<a
 				href="https://www.twitch.tv/theprimeagen"
 				target="_blank"
@@ -189,18 +183,13 @@
 			>
 				The Primeagen
 			</a>
-			and
+			{$t('and')}
 			<a href="https://t3.gg/" target="_blank" rel="noreferrer" class="text-green-600 text-2xl">
 				Theo</a
-			> as these two channels helped me understand the ecosystem from completly different point of views.
-			Give them a follow, you will not regret it!
+			>
+			{$t('skills.thanks-1')}
 		</p>
 	</div>
-	<a
-		href="#experience"
-		class="absolute md:block hidden bottom-0 right-0 w-fit hover:scale-125 transition-transform duration-300"
-		><ChevronsDown class="w-28 h-14" /></a
-	>
 </section>
 <div class="lg:py-16 py-8" />
 <section class="scroll-m-16 relative" id="experience">

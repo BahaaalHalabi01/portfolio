@@ -21,7 +21,7 @@
   }
 
   .skill-li {
-  @apply lg:text-xl text-lg rounded-lg border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900
+  @apply rounded-lg border border-green-600 px-4 py-2 hover:scale-110 duration-300 transition-transform hover:bg-slate-900 font-semibold
   }
 
 }
