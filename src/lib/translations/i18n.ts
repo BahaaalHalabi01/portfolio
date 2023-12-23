@@ -2,7 +2,7 @@ import { derived, writable, type Readable } from "svelte/store";
 import translations, { type TLocales, type TTranslationKeys } from "./translations";
 
 
-const locale = writable("en");
+const locale = writable("ru");
 const locales = Object.keys(translations);
 
 function translate(locale: TLocales, key: TTranslationKeys, vars: Record<string, string>) {

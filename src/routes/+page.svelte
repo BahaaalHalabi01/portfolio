@@ -5,6 +5,7 @@
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
   import NeoVim from '$lib/icons/neovim.svelte'
+  import {t} from '$lib/translations/i18n'
 
 	export let data: PageData;
 	const { titles } = data;
@@ -50,7 +51,7 @@
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
 <img
 		src="/svelte.png"
-		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12 md:block hidden"
+		class="bg-transparent absolute right-0 lg:top-8 md:top-16 top-0 hover:scale-125 transition-all hover:rotate-12 md:block hidden"
 		width={96}
 		height={96}
 		alt="linux"
@@ -58,59 +59,55 @@
 <NeoVim
 
 	/>
-	<p class="lg:text-2xl text-xl">Welcome to my portfolio, my name is</p>
-	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">Bahaa al Halabi</h1>
-	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl">I turn ideas into cool web apps</h2>
-	<p class="text-stone-400 lg:text-2xl lg:max-w-4xl">
-		I am a middle+ full stack web developer. I mainly use <span
+	<p class="lg:text-2xl text-xl">{$t('homepage.welcome')}</p>
+	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{$t('name')}</h1>
+	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{$t('homepage.welcome-sub')}</h2>
+	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
+		{$t('homepage.about-0')} <span
 			class="text-green-600 italic lg:text-3xl text-2xl">Typescript</span
 		>,
-		<span class="text-green-600 italic lg:text-3xl text-2xl">React</span>,{' '}and{' '}<span
+		<span class="text-green-600 italic lg:text-3xl text-2xl">React</span>,{' '}{$t('and')}{' '}<span
 			class="text-green-600 italic text-2xl lg:text-3xl">NextJs</span
 		>
-		to build my frontend apps, and
-		<span class="text-2xl lg:text-3xl text-green-600 italic">NodeJs</span> with various
-		<span class="text-green-600 italic lg:text-3xl text-2xl">Amazon Web Services</span> for the backend.
-		I worked up until now exclusivly with startups, constantly taking on difficult tasks outside of my
-		scope, enabling me to grow significantly.
+    {$t('homepage.about-1')}
+		<span class="text-2xl lg:text-3xl text-green-600 italic">NodeJs</span> {$t('homepage.about-2')}
+		<span class="text-green-600 italic lg:text-3xl text-2xl">Amazon Web Services</span> {$t('homepage.about-3')}.
+    {$t('homepage.about-4')}
 	</p>
-	<p class="text-stone-400 lg:text-2xl lg:max-w-4xl">
-		I would like to believe that i am not a <q>React Developer</q>, and that i understand the
-		fundementals of programming well, enabling me to dive into other technologies.
+	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
+    {$t('homepage.about-5')} <q>React {$t('developer')}</q>, {$t('homepage.about-6')} 
 		<span class="text-green-600 lg:text-3xl text-2xl italic">Rust</span>
-		and <span class="text-svelte text-2xl lg:text-3xl italic">Svelte</span> being on top of the list.
+    {$t('and')} <span class="text-green-600 text-2xl lg:text-3xl italic">Svelte</span> {$t('homepage.about-7')}
 	</p>
 
-	<p class="text-stone-400 lg:text-2xl lg:max-w-4xl">
-		This website was built using my favorite meta framework
+	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
+    {$t('homepage.about-8')}
 		<a
 			target="_blank"
 			rel="noreferrer"
-			class="text-svelte italic text-2xl lg:text-3xl"
+			class="text-green-600 italic text-2xl lg:text-3xl"
 			href="https://kit.svelte.dev">SvelteKit</a
-		>, with
+		>, {$t('with')}
 		<a
 			href="https://svelte-5-preview.vercel.app/docs/introduction"
 			target="_blank"
 			rel="noreferrer"
-			class="text-svelte italic text-2xl lg:text-3xl"
+			class="text-green-600 italic text-2xl lg:text-3xl"
 			>Svelte5
 		</a>
-		written using the&nbsp;<span class="italic text-2xl lg:text-3xl">superior</span>&nbsp;text
-		editor
-		<a
+    {$t('homepage.about-9')}&nbsp;<span class="italic text-2xl lg:text-3xl">{$t('superior')}</span>&nbsp;{$t('text-editor')}<a
 			class="text-green-600 italic text-2xl lg:text-3xl"
 			href="https://neovim.io/"
 			target="_blank"
 			rel="noreferrer">{' '}NeoVim</a
-		>. I use
+		>. {$t('homepage.about-10')}
 		<a
 			class="lg:text-3xl italic text-green-600 text-2xl"
 			href="https://pop.system76.com/"
 			target="_blank"
-			rel="noreferrer">linux{' '}</a
+			rel="noreferrer">Linux{' '}</a
 		>
-		as my preferred operating system.
+    {$t('homepage.about-11')}
 	</p>
 	<div class="lg:py-20 py-8" />
 	<a
