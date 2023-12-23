@@ -4,17 +4,19 @@
 	import type { EventHandler } from 'svelte/elements';
 
 	let {
+		id = '',
 		label = '',
 		href = '',
 		website = '',
 		className = '',
-    children
+		children
 	} = $props<{
+		id: string;
 		label?: string;
 		href?: string;
 		website?: string;
 		className?: string;
-    children?:any
+		children?: any;
 	}>();
 
 	const experiences = getExperiences();
@@ -28,7 +30,7 @@
 			//closing myself need to keep one open
 			if (size <= 3) {
 				//close myself only
-				$experiences.delete(label);
+				$experiences.delete(id);
 				$experiences = $experiences;
 				return;
 			}
@@ -36,7 +38,7 @@
 			let remove = size - 2;
 			$experiences.forEach((val) => {
 				if (val === 'lmt') return (remove -= 1);
-				if (val === label) {
+				if (val === id) {
 					$experiences.delete(val);
 					remove -= 1;
 				}
@@ -52,11 +54,11 @@
 			$experiences.add('lmt');
 		}
 
-		open ? $experiences.add(label) : $experiences.delete(label);
+		open ? $experiences.add(id) : $experiences.delete(id);
 		$experiences = $experiences;
 	};
 
-	const checked = $derived(!!$experiences.has(label));
+	const checked = $derived(!!$experiences.has(id));
 
 	const resetToggle = () => {
 		const tglAll = document.getElementById('tgl-all-btn') as HTMLButtonElement;
@@ -66,7 +68,7 @@
 </script>
 
 {#if checked}
-<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 	<details open on:toggle|preventDefault={setChecked} on:click={resetToggle}>
 		<summary class={cn('text-slate-300 max-w-fit lg:text-3xl text-2xl', className)}>
 			{label}
@@ -75,8 +77,8 @@
 				<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>{/if}
 		</summary>
 		<div class="flex flex-col gap-y-4 pt-4 relative">
-{@render children()}
-    </div>
+			{@render children()}
+		</div>
 	</details>
 {:else}
 	<details on:toggle|preventDefault={setChecked}>

@@ -3,16 +3,15 @@ import translations, { type TLocales, type TTranslationKeys } from "./translatio
 import { browser } from "$app/environment";
 import { getContext, setContext } from "svelte";
 
-enum ContextKeys  {
+enum ContextKeys {
   translate = 'translate',
   locale = 'locale'
 }
 
 const startingLocale = 'ru' as TLocales
 
-const callback = ($locale: TLocales) => (key: TTranslationKeys, defaultLocale?: TLocales, vars = {}) => translate($locale, key, vars, defaultLocale)
 
-
+/**@todo maybe this isn't needed, investigate**/
 const createLocale = (l?: TLocales) => {
   const locales = writable(l ?? startingLocale);
   setContext(ContextKeys.locale, locales)
@@ -23,26 +22,25 @@ const getLocale = () => {
   return getContext(ContextKeys.locale) as Writable<TLocales>
 }
 
-
+const translateCallback = ($locale: TLocales) => (key: TTranslationKeys, defaultLocale?: TLocales, vars = {}) => translate($locale, key, vars, defaultLocale)
 const createTranslations = () => {
   const l = getLocale()
   if (!locales) throw new Error('Create locale store before calling translation')
 
-  const t: Readable<ReturnType<typeof callback>> = derived(l, callback);
+  const t: Readable<ReturnType<typeof translateCallback>> = derived(l, translateCallback);
   setContext(ContextKeys.translate, t)
   return t
 }
 
 
-
 const getTranslations = () => {
-  return getContext(ContextKeys.translate) as Readable<ReturnType<typeof callback>>
+  return getContext(ContextKeys.translate) as Readable<ReturnType<typeof translateCallback>>
 }
 
 
 const locales = Object.keys(translations);
 
-function translate(l: TLocales, key: TTranslationKeys, vars: Record<string, string>, defaultLocale = startingLocale ) {
+function translate(l: TLocales, key: TTranslationKeys, vars: Record<string, string>, defaultLocale = startingLocale) {
 
   //load locale from server if it exists
   let locale = browser ? l : defaultLocale

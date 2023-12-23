@@ -12,6 +12,10 @@
     @apply lg:text-lg font-sans ;
   }
 
+  strong {
+    @apply text-green-600
+  }
+
 }
 
 @layer utilities {

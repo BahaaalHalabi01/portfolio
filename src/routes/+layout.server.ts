@@ -8,7 +8,7 @@ export const load: LayoutServerLoad = async (event) => {
 
   if (locale !== 'en' && locale !== 'ru') locale = 'ru'
 
-	return {
+  return {
     locale
-	};
+  };
 };
