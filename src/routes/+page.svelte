@@ -6,7 +6,7 @@
 	import type { PageData } from './$types';
 	import NeoVim from '$lib/icons/neovim.svelte';
 	import type { TTranslationKeys } from '$src/lib/translations/translations';
-	import { getTranslations } from '$src/lib/translations/i18n';
+	import { getLocale, getTranslations } from '$src/lib/translations/i18n';
 	import { browser } from '$app/environment';
 
 	let { data } = $props<{ data: PageData }>();
@@ -49,8 +49,9 @@
 		$experiences = $experiences;
 	};
 
+	const locale = getLocale();
 	const translate = getTranslations();
-	const t = (key: TTranslationKeys) => $translate(key, data.locale);
+	const t = (key: TTranslationKeys) => $translate(key, data.locale as any);
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
@@ -231,108 +232,21 @@
 	<div class="flex gap-y-16 flex-col py-8">
 		{#each data.experienceData as exp (exp.id)}
 			<ExperienceAccordion label={exp.title} website={exp.website} href={exp.href} id={exp.id}>
-				<p class="italic">{exp.duration}</p>
+				<p class="italic">{exp.duration[$locale]}</p>
 				<ul class="list-disc list-inside max-w-6xl">
-					<!-- {#if browser} -->
-					{#each exp.tasks as task, i (task)}
-						{@html task}
-					{/each}
-					<!-- {/if} -->
+					{#if exp.tasks && exp.tasks[$locale].length > 0}
+						{#each exp.tasks[$locale] as task, i (task)}
+							{@html task}
+						{/each}
+					{/if}
 				</ul>
-				<p class="text-svelte">
-					{exp.summary}
+				<p class="text-green-600">
+					{exp.summary && exp.summary[$locale]}
 				</p>
 			</ExperienceAccordion>
 		{/each}
 
-		<!-- <ExperienceAccordion label={titles[1]} href="https://qaff.com" website="qaff.com"> -->
-		<!-- 	<p class="italic">August 2023 - September 2023 (1 Month)</p> -->
-		<!-- 	<ul class="list-disc list-inside"> -->
-		<!-- 		<li> -->
-		<!-- 			Implement an AI-assisted multi-stage form that takes some input from the user, sends it to -->
-		<!-- 			the lambda which then based on the results requires different input that has to be -->
-		<!-- 			rendered. Upon completing the data collection, the lambda will return a final result which -->
-		<!-- 			has to be integrated with the existing manual form. -->
-		<!-- 		</li> -->
-		<!---->
-		<!-- 		<li> -->
-		<!-- 			Refactor class-based React components into functional, and extract logic and common ui -->
-		<!-- 			into their own components. - Implement designs using material-ui from figma and coordinate -->
-		<!-- 			with backend for needed apis -->
-		<!-- 		</li> -->
-		<!-- 		<li>Add documentation using JsDoc and Postman collections.</li> -->
-		<!-- 	</ul> -->
-		<!-- </ExperienceAccordion> -->
-		<!-- <ExperienceAccordion label={titles[2]}> -->
-		<!-- 	<p class="italic">July 2023 - September 2023 (3 Months)</p> -->
-		<!-- 	<p class="text-xl"> -->
-		<!-- 		This project allowed me to try the new NextJs App Router and React Server Components in a -->
-		<!-- 		production environment. As i had to make all the tech decisions, it was a good chance to -->
-		<!-- 		test libraries that i already enjoyed working with locally (ex:prisma,authjs) -->
-		<!-- 	</p> -->
-		<!-- 	<p class="text-xl">A summary of the tasks i did:</p> -->
-		<!-- 	<ul class="list-disc list-inside"> -->
-		<!-- 		<li> -->
-		<!-- 			Develop from scratch a NextJs ( Server Components) application that lets the user using a -->
-		<!-- 			flow board (Reactflow library) create a battery testing schema and interact with it using -->
-		<!-- 			drag and drop. -->
-		<!-- 		</li> -->
-		<!-- 		<li> -->
-		<!-- 			Vizualize data in a table allowing you to edit,delete, and duplicate your testing schemas. -->
-		<!-- 		</li> -->
-		<!-- 		<li>Host the application, use PostgreSql with an Orm for the database (using Supabase).</li> -->
-		<!-- 		<li> -->
-		<!-- 			Write an api layer using traditional http routes in NextJs and fetch directly in Server -->
-		<!-- 			Components when possible. -->
-		<!-- 		</li> -->
-		<!-- 		<li>Authentication using session tokens with the help of AuthJs.</li> -->
-		<!-- 	</ul> -->
-		<!-- </ExperienceAccordion> -->
-		<!-- <ExperienceAccordion -->
-		<!-- 	label={titles[4]} -->
-		<!-- 	href={'https://bankerway.com/Main/about-2/'} -->
-		<!-- 	website="bankerway.com" -->
-		<!-- > -->
-		<!-- 	<p class="italic">September 2021 (1 Month)</p> -->
-		<!-- 	<p class="text-xl"> -->
-		<!-- 		This was a training i took to get an idea of the fintech world, helping me choose my path as -->
-		<!-- 		a developer. -->
-		<!-- 	</p> -->
-		<!-- 	<p class="text-xl">During my training:</p> -->
-		<!---->
-		<!-- 	<ul class="list-disc list-inside"> -->
-		<!-- 		<li> -->
-		<!-- 			Underwent Temenos T24 banking system training. Used and developed code for the T24 system -->
-		<!-- 			using JBASIC and TAFJ framework that enables customization on basic banking features in -->
-		<!-- 			Temenos T24. -->
-		<!-- 		</li> -->
-		<!-- 		<li> -->
-		<!-- 			During the learning period, I was one of the highest performing students, held zoom -->
-		<!-- 			meetings to help tutor others. I was given a certificate and a job offer at the end. -->
-		<!-- 		</li> -->
-		<!-- 	</ul> -->
-		<!-- </ExperienceAccordion> -->
-		<!-- <ExperienceAccordion label={titles[5]}> -->
-		<!-- 	<p class="italic">June 2020 - September 2020 (4 Months)</p> -->
-		<!-- 	<p class="text-xl"> -->
-		<!-- 		This was a beginner to intermiddiate level bootcamp that upon completion gives you a -->
-		<!-- 		certificate you can submit to university in order to finish a required course -->
-		<!-- 	</p> -->
-		<!-- 	<ul class="list-disc list-inside"> -->
-		<!-- 		<li> -->
-		<!-- 			Receive hands-on web development training with React(hooks), Redux, Firebase, Git Heroku, -->
-		<!-- 			and MongoDb. Ended the bootcamp with developing a full-stack website. -->
-		<!-- 		</li> -->
-		<!-- 	</ul> -->
-		<!-- </ExperienceAccordion> -->
-		<!-- <ExperienceAccordion label={titles[6]}> -->
-		<!-- 	<p class="italic">July 2018 - August 2018 (2 Months)</p> -->
-		<!-- 	<ul class="list-disc list-inside"> -->
-		<!-- 		<li> -->
-		<!-- 			Learn basics of javascript and web development, with a little of React class components -->
-		<!-- 		</li> -->
-		<!-- 	</ul> -->
-		<!-- </ExperienceAccordion> -->
+    <div class="py-2"/>
 		<a
 			href="#about"
 			class="absolute bottom-0 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
