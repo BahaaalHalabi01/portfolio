@@ -10,10 +10,10 @@
 	let { data } = $props<{ data: LayoutData }>();
 
 	const getHeaders = () => [
-		{ href: '/about', label: t('nav.about') },
-		{ href: '/experience', label: t('nav.experience') },
-		{ href: '/work', label: t('nav.work') },
-		{ href: '/contact', label: t('nav.contact') }
+		{ href: '#about', label: t('nav.about') },
+		{ href: '#experience', label: t('nav.experience') },
+		{ href: '#skills', label: t('nav.skills') },
+		{ href: '#contact', label: t('nav.contact') }
 	];
 
   const locale = createLocale(data.locale)

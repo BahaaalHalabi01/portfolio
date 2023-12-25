@@ -1,6 +1,9 @@
 
 const translations = {
   en: {
+    'btn.toggle-all':'Toggle All',
+    'btn.limit-false':'Limit to one experience open at a time',
+    'btn.limit-true':'Open as many as you want',
     'and': 'and',
     'with': 'with',
     'superior': 'superior',
@@ -8,7 +11,7 @@ const translations = {
     'developer': 'developer',
     "nav.about": "about",
     "nav.experience": "experience",
-    "nav.work": "work",
+    "nav.skills": "skills",
     "nav.contact": "contact",
     "nav.resume": "get my resume!",
     "nav.resume-re": "my resume!",
@@ -37,6 +40,9 @@ const translations = {
     "exp.title": "My Work Experience",
   },
   ru: {
+    'btn.toggle-all':'Переключить все',
+    'btn.limit-false':'Ограничение до одного опыта, открытого одновременно',
+    'btn.limit-true':'Открывайте столько, сколько хотите',
     "exp.title": "Мой опыт работы",
     'and': 'и',
     'with': 'с',
@@ -45,7 +51,7 @@ const translations = {
     'developer': 'разработчик',
     "nav.about": "об меня",
     "nav.experience": "опыт",
-    "nav.work": "моя работа",
+    "nav.skills": "мои навыки",
     "nav.contact": "контакт",
     "nav.resume": "скачать мое резюме!",
     "nav.resume-re": "мое резюме!",

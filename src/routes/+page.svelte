@@ -7,7 +7,6 @@
 	import NeoVim from '$lib/icons/neovim.svelte';
 	import type { TTranslationKeys } from '$src/lib/translations/translations';
 	import { getLocale, getTranslations } from '$src/lib/translations/i18n';
-	import { browser } from '$app/environment';
 
 	let { data } = $props<{ data: PageData }>();
 	const experiences = initExperiences();
@@ -51,7 +50,7 @@
 
 	const locale = getLocale();
 	const translate = getTranslations();
-	const t = (key: TTranslationKeys) => $translate(key, data.locale as any);
+	const t = (key: TTranslationKeys) => $translate(key);
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
@@ -210,7 +209,7 @@
 		>
 			<ToggleRight class="hidden group-data-[open=true]/tgl:inline-block h-8 w-8 fill-green-600" />
 			<ToggleLeft class=" hidden group-data-[open=false]/tgl:inline-block h-8 w-8" />
-			Toggle All
+      {t('btn.toggle-all')}
 		</Button>
 		<Button
 			onclick={limitOne}
@@ -221,10 +220,10 @@
 			<Unlock class="hidden group-data-[open=true]/lmt:inline-block" />
 			<Lock class="inline-block group-data-[open=true]/lmt:hidden" />
 			<span class="inline-block group-data-[open=true]/lmt:hidden">
-				Limit to One Open at A time
+      {t('btn.limit-false')}
 			</span>
 			<span class="inline-block group-data-[open=false]/lmt:hidden">
-				Open as many as you want
+      {t('btn.limit-true')}
 			</span>
 		</Button>
 	</div>
