@@ -75,20 +75,20 @@ export const load: PageServerLoad = async event => {
       ru: [
         `<li>Реализация многопроцессной формы с искусственным интеллектом, которая принимает ввод от пользователя, отправляет его в лямбду, которая в свою очередь, в зависимости от результатов, требует различного ввода, который должен быть отображен. После завершения сбора данных лямбда вернет окончательный результат, который должен быть интегрирован с существующей ручной формой.</li>`,
         `<li>Рефакторинг классовых компонентов React в функциональные, выделение логики и общего пользовательского интерфейса в их собственные компоненты. - Реализация дизайнов с использованием material-ui из figma и согласование с бэкендом для необходимых API.</li>`,
-        `<li>Добавление документации с использованием JsDoc и коллекций Postman.</li>`
+        `<li>Добавление документации с использованием <strong>JsDoc</strong> и коллекций <strong>Postman</strong>.</li>`
       ],
       en: [
-        `<li>Implement an AI-assisted multi-stage form that takes some input from the user, sends it to 
+        `<li>Implement an <strong>AI-assisted multi-stage form</strong> that takes some input from the user, sends it to 
 		 			the lambda which then based on the results requires different input that has to be 
 		 			rendered. Upon completing the data collection, the lambda will return a final result which 
 		 			has to be integrated with the existing manual form.
 		 		</li>`,
         `<li>
-		 			Refactor class-based React components into functional, and extract logic and common ui
-		 			into their own components. - Implement designs using material-ui from figma and coordinate
+		 		<strong>Refactor</strong> class-based React components into functional, and extract logic and common ui
+		 			into their own components. - Implement designs using <strong>material-ui</strong> from <strong>figma</strong> and coordinate
 		 			with backend for needed apis
 		 		</li>`,
-        `<li>Add documentation using JsDoc and Postman collections.</li>`
+        `<li>Add documentation using <strong>JsDoc</strong> and <strong>Postman</strong> collections.</li>`
       ]
     }
   },
@@ -113,13 +113,15 @@ export const load: PageServerLoad = async event => {
         `<li>Обслуживание и модернизация микросервисной архитектуры с использованием Node и routing-controllers.</li>`
       ],
       en: [
-        `<li>Developed a React front-end application using Typescript. Used ReactQuery for data management.</li>`,
-        `<li>Real-time notifications were handled using Socket.IO,and authentication using jwt-tokens.</li>`,
-        `<li>Created a component library using Storybook , and Styled-components.</li>`,
-        `<li>The application’s main purpose was to take user input and files (battery related data and measurnments), send them to the backend and display the returned data after parsing it as different Charts. Charting was done using a custom typesafe implementation of ChartJs library.</li>`,
-        `<li>Managed and helped an intern on onboarding, current ongoing tasks and code review.</li>`,
-        `<li>Administered infrastructure on AWS(using kubernetes, and amazon console) </li>`,
-        `<li>Maintained and upgraded a microservices architecture using node and routing - controllers.</li>`
+        `<li>Developed a <strong>React</strong> front-end application using <strong>Typescript</strong>, which main job was to take data inputted by the user, do some processing on it, 
+          and then display findings using <strong>ChartJs</strong>. Used <strong>Tanstack-Query</strong>( react query at the time) for the api layer.</li>`,
+        `<li>Implement Real-time notifications using <strong>Socket.IO</strong>,and authentication using <strong>jwt-tokens</strong> with help of <strong>react context</strong>.</li>`,
+        `<li>Maintained and added on to a component library using <strong>Storybook</strong> , and <strong>Styled-components</strong>.</li>`,
+        `<li>Build a custom <strong>typesafe</strong> wrapper over <strong>ChartJs</strong> which made our work cleaner.</li>`,
+        `<li>Managed and helped an intern on onboarding, current ongoing tasks and <strong>code review</strong>.</li>`,
+        `<li>Administered infrastructure on <strong>AWS</strong>(using kubernetes, and amazon console) </li>`,
+        `<li>Maintained and helped work on a <strong>microservices architecture</strong> using node and routing-controllers.
+        (i was mostly front-end up until the last 6 months,where i got invloved in the backend much more)</li>`
       ]
     }
   },
