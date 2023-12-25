@@ -1,11 +1,9 @@
 import { derived, writable, type Readable, type Writable } from "svelte/store";
 import translations, { type TLocales, type TTranslationKeys } from "./translations";
 import { getContext, setContext } from "svelte";
+import { ContextKeys } from "$lib";
 
-enum ContextKeys {
-  translate = 'translate',
-  locale = 'locale'
-}
+
 
 const defaultLocale = 'ru' as TLocales
 
@@ -68,7 +66,7 @@ function translate(l: TLocales, key: TTranslationKeys, vars: Record<string, stri
 }
 
 
-export { getLocale, locales, createLocale, createTranslations, getTranslations }
+export { getLocale, locales, createLocale, createTranslations, getTranslations  }
 
 
 

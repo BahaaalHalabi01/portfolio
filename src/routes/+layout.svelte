@@ -16,6 +16,7 @@
 		{ href: '#contact', label: t('nav.contact') }
 	];
 
+
   const locale = createLocale(data.locale)
   const translate = createTranslations()
 	const t = (key: TTranslationKeys) => $translate(key, data.locale)

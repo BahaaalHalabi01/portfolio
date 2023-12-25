@@ -7,10 +7,15 @@
 	import NeoVim from '$lib/icons/neovim.svelte';
 	import type { TTranslationKeys } from '$src/lib/translations/translations';
 	import { getLocale, getTranslations } from '$src/lib/translations/i18n';
+	import { getContext, setContext } from 'svelte';
+	import { ContextKeys } from '$src/lib';
+	import { getLimit, setLimit } from '$src/lib/limit';
 
 	let { data } = $props<{ data: PageData }>();
 	const experiences = initExperiences();
 	const ids = data.experienceData.map((exp) => exp.id);
+
+	const lmt = setLimit();
 
 	const openAll = (event: MouseEvent) => {
 		const e = event as MouseEvent & { currentTarget: HTMLButtonElement };
@@ -31,8 +36,6 @@
 		if (checked === 'false') e.currentTarget.dataset['open'] = 'true';
 		else e.currentTarget.dataset['open'] = 'false';
 
-		const limit = $experiences.has('lmt');
-
 		//we have already open experiences
 		const size = $experiences.size;
 		if (size > 1 && checked === 'false') {
@@ -44,7 +47,8 @@
 			}
 		}
 
-		!!limit ? $experiences.delete('lmt') : $experiences.add('lmt');
+		lmt.set(!$lmt);
+
 		$experiences = $experiences;
 	};
 
@@ -209,7 +213,7 @@
 		>
 			<ToggleRight class="hidden group-data-[open=true]/tgl:inline-block h-8 w-8 fill-green-600" />
 			<ToggleLeft class=" hidden group-data-[open=false]/tgl:inline-block h-8 w-8" />
-      {t('btn.toggle-all')}
+			{t('btn.toggle-all')}
 		</Button>
 		<Button
 			onclick={limitOne}
@@ -220,10 +224,10 @@
 			<Unlock class="hidden group-data-[open=true]/lmt:inline-block" />
 			<Lock class="inline-block group-data-[open=true]/lmt:hidden" />
 			<span class="inline-block group-data-[open=true]/lmt:hidden">
-      {t('btn.limit-false')}
+				{t('btn.limit-false')}
 			</span>
 			<span class="inline-block group-data-[open=false]/lmt:hidden">
-      {t('btn.limit-true')}
+				{t('btn.limit-true')}
 			</span>
 		</Button>
 	</div>
@@ -245,7 +249,7 @@
 			</ExperienceAccordion>
 		{/each}
 
-    <div class="py-2"/>
+		<div class="py-2" />
 		<a
 			href="#about"
 			class="absolute bottom-0 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
