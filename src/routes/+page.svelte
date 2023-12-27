@@ -7,9 +7,8 @@
 	import NeoVim from '$lib/icons/neovim.svelte';
 	import type { TTranslationKeys } from '$src/lib/translations/translations';
 	import { getLocale, getTranslations } from '$src/lib/translations/i18n';
-	import { getContext, setContext } from 'svelte';
-	import { ContextKeys } from '$src/lib';
-	import { getLimit, setLimit } from '$src/lib/limit';
+	import { setLimit } from '$src/lib/limit';
+	import { browser } from '$app/environment';
 
 	let { data } = $props<{ data: PageData }>();
 	const experiences = initExperiences();
@@ -55,17 +54,33 @@
 	const locale = getLocale();
 	const translate = getTranslations();
 	const t = (key: TTranslationKeys) => $translate(key);
+
+	$effect(() => {
+		Calendly.initInlineWidget({
+			url: 'https://calendly.com/bahaa-alhalabi01/30min?background_color=334155&text_color=cbd5e1&primary_color=16a34a',
+			parentElement: document.getElementById('calendly')
+		});
+	});
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
-	<img
-		src="/svelte.png"
-		class="bg-transparent absolute right-0 lg:top-8 md:top-16 top-0 hover:scale-125 transition-all hover:rotate-12 md:block hidden"
-		width={96}
-		height={96}
-		alt="linux"
-	/>
-	<NeoVim />
+	<div class="absolute right-0 lg:top-8 hidden bg-transparent lg:flex flex-col gap-y-4 items-end">
+		<img
+			src="/svelte.png"
+			class="bg-transparent hover:scale-125 transition-all hover:rotate-12 md:block hidden"
+			width={96}
+			height={96}
+			alt="svelte"
+		/>
+		<img
+			src="/linux.png"
+			class="bg-transparent hover:scale-125 transition-all hover:rotate-12 md:block hidden"
+			width={96}
+			height={96}
+			alt="linux"
+		/>
+		<NeoVim />
+	</div>
 	<p class="lg:text-2xl text-xl">{t('homepage.welcome')}</p>
 	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{t('name')}</h1>
 	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{t('homepage.welcome-sub')}</h2>
@@ -120,28 +135,28 @@
 <section class="scroll-m-16 relative pb-8" id="skills">
 	<img
 		src="/linux.png"
-		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12"
+		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12 lg:hidden block"
 		width={96}
 		height={96}
 		alt="linux"
 	/>
 	<img
 		src="/svelte.png"
-		class="bg-transparent absolute right-24 -top-4 hover:scale-125 transition-all hover:rotate-12 md:hidden block"
+		class="bg-transparent absolute right-24 -top-4 hover:scale-125 transition-all hover:rotate-12 lg:hidden block"
 		width={96}
 		height={96}
-		alt="linux"
+		alt="svelte"
 	/>
 	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('skills.title')}</h1>
 	<div class="py-6" />
 	<div
-		class="grid lg:grid-cols-3 grid-cols-1 gap-y-6 rounded-md shadow-md lg:px-12 px-4 py-8 bg-slate-700 place-content-center lg:place-items-center max-w-6xl"
+		class="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:px-12 xl:gap-x-24 gap-y-6 rounded-md shadow-md py-8 bg-slate-700 md:gap-x-6 md:px-6 w-full mx-auto max-w-fit px-16 gap-x-0 lg:max-w-fit place-items-start place-content-start"
 	>
-		<div class="flex flex-col items-start justify-start h-full">
+		<div class="flex flex-col items-start justify-start h-full w-full lg:col-span-2">
 			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
 				{t('skills.front')}
 			</p>
-			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
+			<ul class="list-image-checkmark list-inside space-y-2 pt-4 w-full">
 				<li class=" skill-li">Typescript,JsDoc</li>
 				<li class=" skill-li">React, Svelte</li>
 				<li class=" skill-li">NextJs, Sveltekit</li>
@@ -151,23 +166,11 @@
 				<li class=" skill-li">Redux, Redux Toolkit</li>
 			</ul>
 		</div>
-		<div class="flex flex-col items-start justify-start h-full">
-			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
-				{t('skills.tooling')}
-			</p>
-			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
-				<li class="skill-li">NeoVim</li>
-				<li class="skill-li">Linux</li>
-				<li class="skill-li">Notion</li>
-				<li class="skill-li">Git</li>
-			</ul>
-		</div>
-
-		<div class="flex flex-col items-start justify-start h-full">
+		<div class="flex flex-col items-start justify-start h-full w-full lg:col-span-2">
 			<p class="text-3xl pb-2 text-green-600 w-full">
 				{t('skills.backend')}
 			</p>
-			<ul class="list-image-checkmark list-inside space-y-2 pt-4">
+			<ul class="list-image-checkmark list-inside space-y-2 pt-4 w-full">
 				<li class="skill-li">NodeJs</li>
 				<li class="skill-li">Elastic Search</li>
 				<li class="skill-li">Amazon Web Services</li>
@@ -177,7 +180,19 @@
 				<li class=" skill-li">Jest</li>
 			</ul>
 		</div>
+		<div class="flex flex-col items-start justify-start h-full w-full lg:col-span-1">
+			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
+				{t('skills.tooling')}
+			</p>
+			<ul class="list-image-checkmark list-inside space-y-2 pt-4 w-full">
+				<li class="skill-li">NeoVim</li>
+				<li class="skill-li">Linux</li>
+				<li class="skill-li">Notion</li>
+				<li class="skill-li">Git</li>
+			</ul>
+		</div>
 	</div>
+
 	<div class="lg:pt-12 pt-8">
 		<p class="italic font-bold max-w-6xl">
 			{t('skills.thanks')}
@@ -248,15 +263,16 @@
 				</p>
 			</ExperienceAccordion>
 		{/each}
-
-		<div class="py-2" />
-		<a
-			href="#about"
-			class="absolute bottom-0 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
-			title="go to start"><ChevronsUp class="w-28 h-14" /></a
-		>
 	</div>
 </section>
 
 <div class="lg:py-16 py-8" />
-<section id="contact-me"></section>
+<section id="contact " class="relative lg:pb-16 pb-8 w-full flex flex-col justify-center">
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('contact.title')}</h1>
+	<div class="min-w-[300px] lg:max-w-[1400px] w-full h-[700px] pb-8" id="calendly"></div>
+	<a
+		href="#about"
+		class="absolute bottom-0 left-0 float-right w-fit hover:scale-125 transition-transform duration-300"
+		title="go to start"><ChevronsUp class="w-12 h-12 lg:w-16 lg:h-16 p-0" /></a
+	>
+</section>

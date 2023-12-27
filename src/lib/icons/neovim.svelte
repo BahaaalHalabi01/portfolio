@@ -5,7 +5,7 @@
 	height="50"
 	viewBox="0 0 742 214"
 	aria-label="Neovim"
-	class="bg-transparent absolute right-0 lg:top-44 top-0 hover:scale-125 transition-all hover:rotate-12 hidden md:block"
+	class="bg-transparent hover:scale-125 transition-all hover:rotate-12"
 >
 	<title>Neovim</title>
 	<defs>

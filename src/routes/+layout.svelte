@@ -16,10 +16,9 @@
 		{ href: '#contact', label: t('nav.contact') }
 	];
 
-
-  const locale = createLocale(data.locale)
-  const translate = createTranslations()
-	const t = (key: TTranslationKeys) => $translate(key, data.locale)
+	const locale = createLocale(data.locale);
+	const translate = createTranslations();
+	const t = (key: TTranslationKeys) => $translate(key, data.locale);
 
 	let headers = $state(getHeaders());
 
@@ -32,6 +31,15 @@
 	};
 
 </script>
+
+<svelte:head>
+	<script
+		src="https://assets.calendly.com/assets/external/widget.js"
+    defer
+		async
+	></script>
+	<meta name="Cross-Origin-Opener-Policy" content="same-origin" />
+</svelte:head>
 
 <main class="container w-full mx-auto flex flex-col grow min-h-screen relative">
 	<nav
@@ -76,11 +84,11 @@
 			>
 		</div>
 	</nav>
-	<div class="lg:px-24 lg:py-12 py-4">
+	<div class="xl:px-24 lg:px-20 lg:py-12 py-4">
 		<slot />
 	</div>
 
-	<div class="lg:sticky hidden bottom-0 md:flex flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900">
+	<div class="lg:sticky hidden bottom-0 md:flex  flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900">
 		<a
 			href="https://github.com/BahaaalHalabi01"
 			class="hover:scale-125 transition-transform duration-300 ease-out"

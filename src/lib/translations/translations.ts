@@ -1,6 +1,7 @@
 
 const translations = {
   en: {
+    'contact.title':'Contact Me!',
     'btn.toggle-all':'Toggle All',
     'btn.limit-false':'Limit to one experience open at a time',
     'btn.limit-true':'Open as many as you want',
@@ -40,6 +41,7 @@ const translations = {
     "exp.title": "My Work Experience",
   },
   ru: {
+    'contact.title':'Свяжитесь со мной!',
     'btn.toggle-all':'Переключить все',
     'btn.limit-false':'Ограничение до одного опыта, открытого одновременно',
     'btn.limit-true':'Открывайте столько, сколько хотите',
