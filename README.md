@@ -1,28 +1,23 @@
-# create-svelte
+# Portfolio
+
+This website was made to be a place where i can put a `prettier` version of my CV, demonstrating
+my web development skills, and hopefully i can turn it into a nice showcase of all my previous/future projects. 
+
+It is developed using Svelte5 **at time of making this Svelte5 still isn't production ready**. To make translations 
+work as intended, i just used native svelte stores.
+
+
+## create-sveltv
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
 ## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've created a project and installed dependencies with `pnpm install`, start a development server:
 
 ```bash
-npm run dev
-
+pnpm dev
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev -- --open
 ```
 
 ## Building
@@ -30,18 +25,17 @@ npm run dev -- --open
 To create a production version of your app:
 
 ```bash
-npm run build
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+You can preview the production build with `pnpm preview`.
 
 
 ## Todos
 
-[] Add Optional Authentication using authjs
-[] Add animations with native svelte
-[] Create filler routes
-[] Put resume download link
-[] Write code inside of the portfolio 
+- [ ] Add Optional Authentication using authjs
+- [ ] Add animations with native svelte
+- [ ] Create filler routes
+- [X] Put resume download link
+- [ ] Write code inside of the portfolio
+- [ ] Write e2e tests using cypress
