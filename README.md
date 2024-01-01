@@ -33,6 +33,7 @@ You can preview the production build with `pnpm preview`.
 
 ## Todos
 
+- [ ] Highlight remaining skills on experience
 - [ ] Add Optional Authentication using authjs
 - [ ] Add animations with native svelte
 - [ ] Create filler routes

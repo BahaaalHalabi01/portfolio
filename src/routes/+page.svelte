@@ -269,8 +269,8 @@
 	</div>
 </section>
 
-<div class="lg:py-16 py-8" />
-<section id="contact" class="relative lg:pb-16 pb-8 w-full flex flex-col justify-center">
+<div class="lg:pt-16 pt-8" />
+<section id="contact" class="relative pb-8 w-full flex flex-col justify-center">
 	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('contact.title')}</h1>
 
 	<div
