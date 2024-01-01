@@ -20,6 +20,10 @@
 
 @layer utilities {
 
+  .head-p {
+  @apply text-stone-400 lg:text-2xl lg:max-w-5xl ;
+  }
+
   .important-link {
     @apply lg:text-3xl text-2xl text-green-600 font-bold hover:underline
   }

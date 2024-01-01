@@ -8,7 +8,6 @@
 	import type { TTranslationKeys } from '$src/lib/translations/translations';
 	import { getLocale, getTranslations } from '$src/lib/translations/i18n';
 	import { setLimit } from '$src/lib/limit';
-	import { browser } from '$app/environment';
 
 	let { data } = $props<{ data: PageData }>();
 	const experiences = initExperiences();
@@ -54,13 +53,6 @@
 	const locale = getLocale();
 	const translate = getTranslations();
 	const t = (key: TTranslationKeys) => $translate(key);
-
-	$effect(() => {
-		Calendly.initInlineWidget({
-			url: 'https://calendly.com/bahaa-alhalabi01/30min?background_color=334155&text_color=cbd5e1&primary_color=16a34a',
-			parentElement: document.getElementById('calendly')
-		});
-	});
 </script>
 
 <section class="flex lg:gap-y-4 gap-y-6 flex-col min-h-full relative scroll-my-32" id="about">
@@ -84,7 +76,7 @@
 	<p class="lg:text-2xl text-xl">{t('homepage.welcome')}</p>
 	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{t('name')}</h1>
 	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{t('homepage.welcome-sub')}</h2>
-	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
+	<p class="head-p">
 		{t('homepage.about-0')}
 		<a href="https://www.typescriptlang.org" target="_blank" class="important-link">Typescript</a>,
 		<a class=" important-link" href="https://react.dev" target="_blank">React</a>,{' '}{t(
@@ -98,14 +90,14 @@
 		{t('homepage.about-3')}.
 		{t('homepage.about-4')}
 	</p>
-	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
+	<p class="head-p">
 		{t('homepage.about-5')} <q>React {t('developer')}</q>, {t('homepage.about-6')}
 		<a class="important-link" href="https://www.rust-lang.org/" target="_blank">Rust</a>
 		{t('and')} <a class="important-link" href="https://svelte.dev/" target="_blank">Svelte</a>
 		{t('homepage.about-7')}
 	</p>
 
-	<p class="text-stone-400 lg:text-2xl lg:max-w-5xl">
+	<p class="head-p">
 		{t('homepage.about-8')}
 		<a target="_blank" rel="noreferrer" class="important-link" href="https://kit.svelte.dev"
 			>SvelteKit</a
@@ -130,19 +122,30 @@
 		>
 		{t('homepage.about-11')}
 	</p>
+	<p class="head-p">
+		{t('homepage.find-website')}
+		<a
+			href="https://github.com/BahaaalHalabi01"
+			class="hover:scale-125 transition-transform duration-300 ease-out important-link"
+			target="_blank"
+			rel="author"
+		>
+			Github
+		</a>
+	</p>
 </section>
 <div class="lg:py-20 py-8" />
 <section class="scroll-m-16 relative pb-8" id="skills">
 	<img
 		src="/linux.png"
-		class="bg-transparent absolute right-0 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12 lg:hidden block"
+		class="bg-transparent absolute -right-4 lg:top-8 top-0 hover:scale-125 transition-all hover:rotate-12 lg:hidden block"
 		width={96}
 		height={96}
 		alt="linux"
 	/>
 	<img
 		src="/svelte.png"
-		class="bg-transparent absolute right-24 -top-4 hover:scale-125 transition-all hover:rotate-12 lg:hidden block"
+		class="bg-transparent absolute right-16 -top-4 hover:scale-125 transition-all hover:rotate-12 lg:hidden block"
 		width={96}
 		height={96}
 		alt="svelte"
@@ -150,7 +153,7 @@
 	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('skills.title')}</h1>
 	<div class="py-6" />
 	<div
-		class="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:px-12 xl:gap-x-24 gap-y-6 rounded-md shadow-md py-8 bg-slate-700 md:gap-x-6 md:px-6 w-full mx-auto max-w-fit px-16 gap-x-0 lg:max-w-fit place-items-start place-content-start"
+		class="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:px-12 xl:gap-x-24 gap-y-6 rounded-md shadow-md py-8 bg-slate-700 md:gap-x-6 md:px-6 w-full mx-auto max-w-fit px-10 gap-x-0 lg:max-w-fit place-items-start place-content-start"
 	>
 		<div class="flex flex-col items-start justify-start h-full w-full lg:col-span-2">
 			<p class="text-3xl pb-2 text-green-600 font-medium w-full">
@@ -177,7 +180,7 @@
 				<li class=" skill-li">Serverless</li>
 				<li class=" skill-li">Sql, MongoDb, DynamoDb</li>
 				<li class=" skill-li">Rust</li>
-				<li class=" skill-li">Jest</li>
+				<li class=" skill-li">Jest, Cypress</li>
 			</ul>
 		</div>
 		<div class="flex flex-col items-start justify-start h-full w-full lg:col-span-1">
@@ -218,7 +221,7 @@
 <div class="lg:py-16 py-8" />
 <section class="scroll-m-16 relative" id="experience">
 	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('exp.title')}</h1>
-	<div class="flex flex-col md:flex-row items-start md:items-end lg:gap-x-8 lg:py-8 py-4 gap-y-4">
+	<div class="flex flex-col md:flex-row items-start md:items-end gap-x-8 lg:py-8 py-4 gap-y-4">
 		<Button
 			onclick={openAll}
 			class="inline-flex gap-x-2 items-center group/tgl"
@@ -269,10 +272,14 @@
 <div class="lg:py-16 py-8" />
 <section id="contact" class="relative lg:pb-16 pb-8 w-full flex flex-col justify-center">
 	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('contact.title')}</h1>
-	<div class="min-w-[300px] lg:max-w-[1400px] w-full h-[700px] pb-8" id="calendly"></div>
+
+	<div
+		class="calendly-inline-widget min-w-[300px] lg:max-w-[1400px] w-full h-[900px] md:h-[950px] pb-8"
+		data-url="https://calendly.com/bahaa-alhalabi01/30min?background_color=334155&text_color=cbd5e1&primary_color=16a34a"
+	></div>
 	<a
 		href="#about"
-		class="absolute bottom-0 left-0 float-right w-fit hover:scale-125 transition-transform duration-300"
+		class="absolute bottom-0 right-0 float-right w-fit hover:scale-125 transition-transform duration-300"
 		title="go to start"><ChevronsUp class="w-12 h-12 lg:w-16 lg:h-16 p-0" /></a
 	>
 </section>

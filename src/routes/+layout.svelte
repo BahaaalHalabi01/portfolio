@@ -2,12 +2,12 @@
 	import Telegram from '$src/lib/icons/telegram.svelte';
 	import '../app.css';
 	import { AtSign, BugPlay, Github, Instagram, Linkedin, Twitter } from 'lucide-svelte';
-	import { browser } from '$app/environment';
 	import type { TTranslationKeys } from '$src/lib/translations/translations';
 	import type { LayoutData } from './$types';
 	import { createLocale, createTranslations, locales } from '$src/lib/translations/i18n';
+	import type { Snippet } from 'svelte';
 
-	let { data } = $props<{ data: LayoutData }>();
+	let { data, children } = $props<{ data: LayoutData; children: Snippet }>();
 
 	const getHeaders = () => [
 		{ href: '#about', label: t('nav.about') },
@@ -29,15 +29,10 @@
 	const setLocale = () => {
 		headers = getHeaders();
 	};
-
 </script>
 
 <svelte:head>
-	<script
-		src="https://assets.calendly.com/assets/external/widget.js"
-    defer
-		async
-	></script>
+	<script src="https://assets.calendly.com/assets/external/widget.js" defer async></script>
 	<meta name="Cross-Origin-Opener-Policy" content="same-origin" />
 </svelte:head>
 
@@ -45,31 +40,30 @@
 	<nav
 		class="lg:flex items-center justify-between lg:h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900 z-20 lg:py-0 py-2"
 	>
-		<div class="flex items-center gap-x-8">
-			<a class="inline-flex gap-x-2 items-center p-2" href="/">
-				<BugPlay />
-				{t('name')}
-			</a>
-			{#if browser}
-				<select bind:value={$locale} class="bg-transparent" on:change={setLocale}>
+		<div class="flex items-center md:gap-x-8 justify-between flex-wrap">
+			<span class="flex gap-x-2 lg:gap-x-6">
+				<a class="inline-flex gap-x-2 items-center" href="/">
+					<BugPlay />
+					{t('name')}
+				</a>
+				<select bind:value={$locale} class="bg-transparent  px-1" on:change={setLocale}>
 					{#each locales as l}
 						<option value={l}>{l}</option>
 					{/each}
 				</select>
-			{/if}
+			</span>
+			<a
+				class="border-green-600 border-2 p-2 inline-block lg:hidden float-right"
+				href="/Bahaa_al_Halabi.pdf"
+				download={'Bahaa_al_Halabi.pdf'}>{t('nav.resume-re')}</a
+			>
 		</div>
-
-		<a
-			class="border-green-600 border-2 p-2 inline-block lg:hidden float-right"
-			href="/Bahaa_al_Halabi.pdf"
-			download={'Bahaa_al_Halabi.pdf'}>{t('nav.resume-re')}</a
-		>
 
 		<div
 			class="flex flex-row lg:gap-x-12 items-center lg:py-0 py-2 text-sm lg:text-base justify-between lg:w-fit w-full"
 		>
 			{#each headers as header, i}
-				<span class="flex lg:gap-x-2 gap-x-1">
+				<span class="flex lg:gap-x-2 gap-x-0.5">
 					<span class="text-green-600">0{i + 1}{'.'}</span>
 					<a href={header.href} class="cursor-pointer">
 						{header.label}
@@ -85,10 +79,10 @@
 		</div>
 	</nav>
 	<div class="xl:px-24 lg:px-20 lg:py-12 py-4">
-		<slot />
+		{@render children()}
 	</div>
 
-	<div class="lg:sticky hidden bottom-0 md:flex  flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900">
+	<div class="lg:sticky hidden bottom-0 md:flex flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900">
 		<a
 			href="https://github.com/BahaaalHalabi01"
 			class="hover:scale-125 transition-transform duration-300 ease-out"
@@ -136,7 +130,7 @@
 		</a>
 	</div>
 
-	<footer>
+	<footer class="flex items-center justify-center pt-8">
 		<a href="https://www.flaticon.com/free-icons/check-mark" title="check mark icons"
 			>Check mark icons created by icon wind - Flaticon</a
 		>
