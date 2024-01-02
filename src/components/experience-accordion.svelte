@@ -71,27 +71,30 @@
 
 <div data-testid={'accordion-' + id}>
 	<label
+    data-testid='label'
 		class={cn('text-slate-300 max-w-fit lg:text-3xl text-2xl cursor-pointer z-10', className)}
 		for={'accordion-' + id}
 	>
 		<ChevronRight
 			class={cn('inline-block transition-transform duration-500', checked && 'rotate-90')}
 		/>
-		<input
-			type="checkbox"
-			on:change={resetToggle}
-			id={'accordion-' + id}
-			class="hidden"
-			name="exp-accordion"
-		/>
+
 		{label}
 		{#if href}
 			{'-'}
 			<a {href} class="underline italic" target="_blank" rel="noreferrer">{website}</a>
 		{/if}
+		<input
+			type="checkbox"
+			on:change={resetToggle}
+			id={'accordion-' + id}
+			class="sr-only"
+			name="exp-accordion"
+		/>
 	</label>
+
 	<div
-    role="group"
+		role="group"
 		class={cn(
 			'flex flex-col gap-y-4 pt-4 relative opacity-0 transition-all duration-500 h-0 overflow-y-hidden',
 			checked && 'opacity-100 h-fit'

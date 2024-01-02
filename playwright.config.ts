@@ -6,6 +6,9 @@ const config: PlaywrightTestConfig = {
     command: 'pnpm build && pnpm preview',
     port: 4173
   },
+  use:{
+    trace:'retain-on-failure'
+  },
   testDir: 'tests',
   testMatch: /(.+\.)?(test|spec)\.[jt]s/,
   projects: [

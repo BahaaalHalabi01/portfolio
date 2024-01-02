@@ -36,37 +36,35 @@ test.describe('translations', () => {
 test.describe('interactions', () => {
 
   test('go to skills', async ({ page }) => {
-    await page.click('[data-testid="skills-nav"]')
-    const header = page.locator('[data-testid="skills"]')
+    await page.getByTestId("skills-nav").click()
+    const header = page.getByTestId("skills")
     await header.waitFor()
-    await expect(page.getByTestId('skills')).toBeInViewport()
+    await expect(header).toBeInViewport()
 
   })
   test('go to experience', async ({ page }) => {
-    await page.click('[data-testid="experience-nav"]')
-    const header = page.locator('[data-testid="experience"]')
+    await page.getByTestId("experience-nav").click()
+    const header = page.getByTestId('experience')
     await header.waitFor()
-    await expect(page.getByTestId('experience')).toBeInViewport()
+    await expect(header).toBeInViewport()
 
   })
 
-  test('should open a skill', async ({ page }) => {
+  test('should open and close a  skill', async ({ page }) => {
 
     await page.click('[data-testid="experience-nav"]')
     const header = page.getByTestId('experience')
     await header.waitFor()
-    await expect(page.getByTestId('experience')).toBeInViewport()
 
     const accordion = page.getByTestId(/accordion-*/).first()
-
-    await accordion.getByRole('checkbox').check()
+    await accordion.getByTestId('label').click()
 
     await expect(accordion.getByRole('group')).toHaveClass(/opacity-100/)
-
-
-
+    await accordion.getByTestId('label').click()
+    await expect(accordion.getByRole('group')).toHaveClass(/opacity-0/)
 
   })
+
 
 })
 
