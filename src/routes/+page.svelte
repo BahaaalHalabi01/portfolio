@@ -5,7 +5,7 @@
 	import Button from '$src/components/button.svelte';
 	import type { PageData } from './$types';
 	import NeoVim from '$lib/icons/neovim.svelte';
-	import type { TTranslationKeys } from '$src/lib/translations/translations';
+	import type { TTranslationKeys } from '$src/lib/translations';
 	import { getLocale, getTranslations } from '$src/lib/translations/i18n';
 	import { setLimit } from '$src/lib/limit';
 
@@ -74,7 +74,7 @@
 		<NeoVim />
 	</div>
 	<p class="lg:text-2xl text-xl">{t('homepage.welcome')}</p>
-	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl">{t('name')}</h1>
+	<h1 class="text-green-600 lg:text-7xl font-semibold text-4xl" data-testid='name'>{t('name')}</h1>
 	<h2 class="lg:text-7xl lg:pb-6 font-medium text-4xl lg:pr-60">{t('homepage.welcome-sub')}</h2>
 	<p class="head-p">
 		{t('homepage.about-0')}
@@ -150,7 +150,7 @@
 		height={96}
 		alt="svelte"
 	/>
-	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('skills.title')}</h1>
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl" data-testid=skills>{t('skills.title')}</h1>
 	<div class="py-6" />
 	<div
 		class="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:px-12 xl:gap-x-24 gap-y-6 rounded-md shadow-md py-8 bg-slate-700 md:gap-x-6 md:px-6 w-full mx-auto max-w-fit px-10 gap-x-0 lg:max-w-fit place-items-start place-content-start"
@@ -180,7 +180,7 @@
 				<li class=" skill-li">Serverless</li>
 				<li class=" skill-li">Sql, MongoDb, DynamoDb</li>
 				<li class=" skill-li">Rust</li>
-				<li class=" skill-li">Jest, Cypress</li>
+				<li class=" skill-li">Jest, Cypress, Playwright</li>
 			</ul>
 		</div>
 		<div class="flex flex-col items-start justify-start h-full w-full lg:col-span-1">
@@ -220,7 +220,7 @@
 </section>
 <div class="lg:py-16 py-8" />
 <section class="scroll-m-16 relative" id="experience">
-	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('exp.title')}</h1>
+	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl" data-testid=experience>{t('exp.title')}</h1>
 	<div class="flex flex-col md:flex-row items-start md:items-end gap-x-8 lg:py-8 py-4 gap-y-4">
 		<Button
 			onclick={openAll}

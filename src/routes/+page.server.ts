@@ -1,4 +1,4 @@
-import type { TLocales } from "$src/lib/translations/translations"
+import type { TLocales } from "$src/lib/translations"
 import type { PageServerLoad } from "./$types"
 
 type TTranslationObject<T = string> = Record<TLocales, T>

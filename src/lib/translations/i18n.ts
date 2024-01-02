@@ -1,5 +1,5 @@
 import { derived, writable, type Readable, type Writable } from "svelte/store";
-import translations, { type TLocales, type TTranslationKeys } from "./translations";
+import translations, { type TLocales, type TTranslationKeys } from "./";
 import { getContext, setContext } from "svelte";
 import { ContextKeys } from "$lib";
 

@@ -1,4 +1,4 @@
-import type { TLocales } from '$src/lib/translations/translations';
+import type { TLocales } from '$src/lib/translations';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async (event) => {

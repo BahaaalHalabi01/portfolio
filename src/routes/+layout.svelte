@@ -2,7 +2,7 @@
 	import Telegram from '$src/lib/icons/telegram.svelte';
 	import '../app.css';
 	import { AtSign, BugPlay, Github, Instagram, Linkedin, Twitter } from 'lucide-svelte';
-	import type { TTranslationKeys } from '$src/lib/translations/translations';
+	import type { TTranslationKeys } from '$src/lib/translations';
 	import type { LayoutData } from './$types';
 	import { createLocale, createTranslations, locales } from '$src/lib/translations/i18n';
 	import type { Snippet } from 'svelte';
@@ -46,7 +46,12 @@
 					<BugPlay />
 					{t('name')}
 				</a>
-				<select bind:value={$locale} class="bg-transparent  px-1" on:change={setLocale}>
+				<select
+					bind:value={$locale}
+					class="bg-transparent px-1"
+					on:change={setLocale}
+					data-testid="language"
+				>
 					{#each locales as l}
 						<option value={l}>{l}</option>
 					{/each}
@@ -64,8 +69,12 @@
 		>
 			{#each headers as header, i}
 				<span class="flex lg:gap-x-2 gap-x-0.5">
-					<span class="text-green-600">0{i + 1}{'.'}</span>
-					<a href={header.href} class="cursor-pointer">
+					<span class="text-green-600">0{i + 1}{'.'} </span>
+					<a
+						href={header.href}
+						class="cursor-pointer"
+						data-testid={header.href.substring(1) + '-nav'}
+					>
 						{header.label}
 					</a>
 				</span>
