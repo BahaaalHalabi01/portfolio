@@ -22,7 +22,6 @@ const config: PlaywrightTestConfig = {
       use: { ...devices['Desktop Safari'] },
     },
   ],
-
 };
 
 export default config;

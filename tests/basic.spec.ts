@@ -12,7 +12,6 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('translations', () => {
-  console.log(language)
 
   test('translated name', async ({ page }) => {
     await expect(page.getByTestId('name')).toContainText(translations[language].name)
@@ -34,21 +33,39 @@ test.describe('translations', () => {
 })
 
 
-test.describe('navigating', () => {
+test.describe('interactions', () => {
 
   test('go to skills', async ({ page }) => {
     await page.click('[data-testid="skills-nav"]')
     const header = page.locator('[data-testid="skills"]')
-    await header.waitFor({ state: 'visible' })
-
+    await header.waitFor()
     await expect(page.getByTestId('skills')).toBeInViewport()
+
   })
   test('go to experience', async ({ page }) => {
     await page.click('[data-testid="experience-nav"]')
     const header = page.locator('[data-testid="experience"]')
-    await header.waitFor({ state: 'visible' })
-
+    await header.waitFor()
     await expect(page.getByTestId('experience')).toBeInViewport()
+
+  })
+
+  test('should open a skill', async ({ page }) => {
+
+    await page.click('[data-testid="experience-nav"]')
+    const header = page.getByTestId('experience')
+    await header.waitFor()
+    await expect(page.getByTestId('experience')).toBeInViewport()
+
+    const accordion = page.getByTestId(/accordion-*/).first()
+
+    await accordion.getByRole('checkbox').check()
+
+    await expect(accordion.getByRole('group')).toHaveClass(/opacity-100/)
+
+
+
+
   })
 
 })
