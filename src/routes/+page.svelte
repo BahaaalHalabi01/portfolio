@@ -270,11 +270,13 @@
 </section>
 
 <div class="lg:pt-16 pt-8" />
-<section id="contact" class="relative pb-8 w-full flex flex-col justify-center">
+<section id="contact" class="relative w-full flex flex-col justify-center">
+
 	<h1 class="text-green-600 lg:text-6xl pr-8 text-4xl">{t('contact.title')}</h1>
 
+	<div class="lg:py-0 py-6" />
 	<div
-		class="calendly-inline-widget min-w-[300px] lg:max-w-[1400px] w-full h-[900px] md:h-[950px] pb-8"
+		class="calendly-inline-widget min-w-[300px] lg:max-w-[1400px] w-full h-[900px] md:h-[950px]"
 		data-url="https://calendly.com/bahaa-alhalabi01/30min?background_color=334155&text_color=cbd5e1&primary_color=16a34a"
 	></div>
 	<a
@@ -283,3 +285,4 @@
 		title="go to start"><ChevronsUp class="w-12 h-12 lg:w-16 lg:h-16 p-0" /></a
 	>
 </section>
+

@@ -31,12 +31,60 @@
 	};
 </script>
 
+{#snippet social()}
+	<a
+		href="https://github.com/BahaaalHalabi01"
+		class="hover:scale-125 transition-transform duration-300 ease-out"
+		target="_blank"
+		rel="author"
+	>
+		<Github />
+	</a>
+	<a
+		href="https://www.linkedin.com/in/bahaa-al-halabi-78066a1a1"
+		target="_blank"
+		rel="author"
+		class="hover:scale-125 transition-transform duration-300 ease-out"
+	>
+		<Linkedin />
+	</a>
+	<a
+		class="hover:scale-125 transition-transform duration-300 ease-out"
+		href="https://t.me/bahaaalhalabi01"
+		target="_blank"
+		rel="author"
+	>
+		<Telegram />
+	</a>
+
+	<a
+		href="mailto:bahaa.alhalabi01@outlook.com"
+		class="hover:scale-125 transition-transform duration-300 ease-out"
+	>
+		<AtSign />
+	</a>
+	<a
+		href="/"
+		class="hover:scale-125 transition-transform duration-300 ease-out"
+		on:click|preventDefault|once={comingSoon}
+	>
+		<Instagram />
+	</a>
+	<a
+		href="/"
+		class="hover:scale-125 transition-transform duration-300 ease-out"
+		on:click|preventDefault|once={comingSoon}
+	>
+		<Twitter />
+	</a>
+{/snippet}
+
 <svelte:head>
 	<script src="https://assets.calendly.com/assets/external/widget.js" defer async></script>
 	<meta name="Cross-Origin-Opener-Policy" content="same-origin" />
 </svelte:head>
 
-<main class="container w-full mx-auto flex flex-col grow min-h-screen relative">
+<main class="container w-full mx-auto flex flex-col grow min-h-screen relative max-h-fit">
 	<nav
 		class="lg:flex items-center justify-between lg:h-16 font-bold text-lg capitalize sticky top-0 bg-slate-900 z-20 lg:py-0 py-2"
 	>
@@ -87,61 +135,17 @@
 			>
 		</div>
 	</nav>
+	<div
+		class="lg:fixed lg:flex hidden top-full -translate-y-full 2xl:left-[8%] left-[4%] flex-col gap-y-8 bg-slate-900 justify-between w-full pb-24 max-w-fit"
+	>
+		{@render social()}
+	</div>
+
 	<div class="xl:px-24 lg:px-20 lg:py-12 py-4">
 		{@render children()}
 	</div>
 
-	<div class="lg:sticky hidden bottom-0 md:flex flex-col gap-y-8 lg:pb-24 max-w-fit bg-slate-900">
-		<a
-			href="https://github.com/BahaaalHalabi01"
-			class="hover:scale-125 transition-transform duration-300 ease-out"
-			target="_blank"
-			rel="author"
-		>
-			<Github />
-		</a>
-		<a
-			href="https://www.linkedin.com/in/bahaa-al-halabi-78066a1a1"
-			target="_blank"
-			rel="author"
-			class="hover:scale-125 transition-transform duration-300 ease-out"
-		>
-			<Linkedin />
-		</a>
-		<a
-			class="hover:scale-125 transition-transform duration-300 ease-out"
-			href="https://t.me/bahaaalhalabi01"
-			target="_blank"
-			rel="author"
-		>
-			<Telegram />
-		</a>
-
-		<a
-			href="mailto:bahaa.alhalabi01@outlook.com"
-			class="hover:scale-125 transition-transform duration-300 ease-out"
-		>
-			<AtSign />
-		</a>
-		<a
-			href="/"
-			class="hover:scale-125 transition-transform duration-300 ease-out"
-			on:click|preventDefault|once={comingSoon}
-		>
-			<Instagram />
-		</a>
-		<a
-			href="/"
-			class="hover:scale-125 transition-transform duration-300 ease-out"
-			on:click|preventDefault|once={comingSoon}
-		>
-			<Twitter />
-		</a>
-	</div>
-
-	<footer class="flex items-center justify-center pt-8">
-		<a href="https://www.flaticon.com/free-icons/check-mark" title="check mark icons"
-			>Check mark icons created by icon wind - Flaticon</a
-		>
+	<footer class="lg:hidden flex w-full sticky bottom-0 justify-between bg-slate-900 p-4">
+		{@render social()}
 	</footer>
 </main>
