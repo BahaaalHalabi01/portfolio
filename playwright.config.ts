@@ -7,7 +7,8 @@ const config: PlaywrightTestConfig = {
     port: 4173
   },
   use:{
-    trace:'retain-on-failure'
+    trace:'retain-on-failure',
+    locale:'en-US',
   },
   testDir: 'tests',
   testMatch: /(.+\.)?(test|spec)\.[jt]s/,

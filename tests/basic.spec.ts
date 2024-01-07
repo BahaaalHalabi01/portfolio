@@ -11,7 +11,30 @@ test.beforeEach(async ({ page }) => {
   language = await page.getByTestId('language').inputValue() as TLocales
 });
 
+
+test.describe('original load ru ', () => {
+  test.use({
+    locale: 'ru-Ru',
+  });
+
+  test('ru locale',async ({page})=>{
+    const selected = page.getByTestId('language')
+
+    await expect(selected).toHaveValue('ru')
+  })
+
+})
+
+
 test.describe('translations', () => {
+
+
+  test('selected locale', async ({ page, context }) => {
+
+    const selected = page.getByTestId('language')
+
+    await expect(selected).toHaveValue(language)
+  })
 
   test('translated name', async ({ page }) => {
     await expect(page.getByTestId('name')).toContainText(translations[language].name)
@@ -38,14 +61,14 @@ test.describe('interactions', () => {
   test('go to skills', async ({ page }) => {
     await page.getByTestId("skills-nav").click()
     const header = page.getByTestId("skills")
-    await header.waitFor()
+    await header.scrollIntoViewIfNeeded()
     await expect(header).toBeInViewport()
 
   })
   test('go to experience', async ({ page }) => {
     await page.getByTestId("experience-nav").click()
     const header = page.getByTestId('experience')
-    await header.waitFor()
+    await header.scrollIntoViewIfNeeded()
     await expect(header).toBeInViewport()
 
   })
@@ -54,7 +77,7 @@ test.describe('interactions', () => {
 
     await page.click('[data-testid="experience-nav"]')
     const header = page.getByTestId('experience')
-    await header.waitFor()
+    await header.scrollIntoViewIfNeeded()
 
     const accordion = page.getByTestId(/accordion-*/).first()
     await accordion.getByTestId('label').click()
