@@ -24,7 +24,7 @@ export const load: PageServerLoad = async event => {
         `<li>Управление инфраструктурой AWS с использованием <strong>Инфраструктуры как кода (Typescript)</strong> и консоли Amazon.</li>`,
         `<li>Преобразование дизайна из Zeplin/Figma/Adobe XD в код с использованием Tailwindcss с использованием <strong>Radix-ui</strong> или <strong>Material-ui</strong>.</li>`,
         `<li>Проектирование необходимых изменений в <strong>инфраструктуре</strong> при необходимости, представление и обсуждение результатов с CTO, а затем разработка после утверждения.</li>`,
-        `<li>Использование тестовой среды для проверки изменений. Написание тестов для бэкенда с использованием <strong>Jest</strong> и ручное тестирование на фронтенде.</li>`,
+        `<li>Использовать среду тестирования для проверки изменений. Напишите <strong>Unit Tests</strong> для серверной части, используя <strong>Jest</strong>, и <strong>Integration Tests</strong> во внешнем интерфейсе, используя <strong>Playwright</strong>.</li>`,
         `<li>Ввод в работу разработчика на неполный рабочий день для помощи в QA/работе на бэкенде, назначение ему задач, помощь при необходимости, как правило, через <strong>совместное программирование</strong>, и <strong>проверка кода</strong> по завершении задачи.</li>`,
         `<li>После первых 6 месяцев я был единственным работающим с технической стороны, поэтому мне приходилось общаться напрямую с владельцем продукта/владельцем компании по вопросам изменений и прогресса, а также принимать <strong>основные технические решения</strong> самостоятельно.</li>`
       ],
@@ -34,7 +34,7 @@ export const load: PageServerLoad = async event => {
         `<li>Manage AWS infrastructure using <strong>Infrastructure as Code (Typescript)</strong> and Amazon console.</li>`,
         `<li>Take design  in zeplin/figma/adobe-xd and transform it into code using Tailwindcss with <strong>Radix-ui</strong> or <strong>Material-ui</strong>.</li>`,
         `<li>Architect the needed <strong>infrastructure</strong> changes when needed, present it and discuss findings CTO then develop upon approval.</li>`,
-        `<li>Use testing enviornment to validate changes. Write tests for the backend using <strong>Jest</strong>, and manually test in the frontend .</li>`,
+        `<li>Use testing enviornment to validate changes. Write <strong>Unit Tests</strong> for the backend using <strong>Jest</strong>, and <strong>Integration Tests</strong> in the frontend using <strong>playwright</strong>.</li>`,
         `<li>Onboard a part-time developer for helping in QA/Back-end work, assign him with tasks, help if needed which usually done through <strong>pair programming</strong>, and <strong>code review</strong> upon finishing the task.</li>`,
         `<li>After the initial 6 months, i was the only one working on the tech side, so i had to communicate directly to the product owner/company owner for changes and progress, and take <strong>major tech decisions</strong> on my own</li>`
       ]
